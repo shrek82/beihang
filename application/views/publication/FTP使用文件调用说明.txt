@@ -1,0 +1,3 @@
+比如上传了 input.gif
+网站调用地址就是  http://zuaa.zju.edu.cn/static/ftp/input.gif
+即：“http://zuaa.zju.edu.cn/static/ftp/”+文件名

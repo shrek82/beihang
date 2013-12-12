@@ -1,0 +1,2 @@
+<!-- publication/reportView:_body -->
+<iframe frameborder="0" id="frmleft" name="frmleft" src="/publication/reportFrameView?id=<?=$report['id']?>" style="border:0px solid #f60" allowtransparency="true" width="920" height="2000"></iframe>
