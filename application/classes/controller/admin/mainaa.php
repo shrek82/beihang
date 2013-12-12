@@ -103,7 +103,7 @@ class Controller_Admin_Mainaa extends Layout_Admin {
                         // 电话分类和号码都存在
                         if ($key && $data['tel_num'][$i]) {
                             $tel_num = $data['tel_num'][$i];
-                            $tel_str .= $key . ':' . $tel_num . ';';
+                            $tel_str .= $key . ':' . $tel_num . ';';;
                         }
                     }
                     // 有效号码们
