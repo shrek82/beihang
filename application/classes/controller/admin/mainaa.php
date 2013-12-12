@@ -197,7 +197,7 @@ class Controller_Admin_Mainaa extends Layout_Admin {
     function action_del() {
         $this->auto_render = FALSE;
         $cid = Arr::get($_GET, 'cid');
-        $del = Doctrine_Query::create()
+        Doctrine_Query::create()
                 ->delete('MainInfo')
                 ->where('id =?', $cid)
                 ->execute();
