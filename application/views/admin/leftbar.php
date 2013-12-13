@@ -153,16 +153,10 @@
                                 <li><a  href="<?= URL::site('admin_donate/annual') ?>"  target="frmright" >捐赠统计</a></li>
                                 <li><a  href="<?= URL::site('admin_donate/annualForm') ?>"  target="frmright" >添加统计</a></li>
                                 <li><a  href="<?= URL::site('admin_donate/importAnnual') ?>"  target="frmright" >导入统计</a></li>
-
-
-                                <li><a  href="<?= URL::site('admin_content/index?type=6') ?>"  target="frmright" >捐赠感言</a></li>
-                                <li><a  href="<?= URL::site('admin_content/index?type=2') ?>"  target="frmright" >真情感言</a></li>
-                                <li><a  href="<?= URL::site('admin_content/index?type=5') ?>"  target="frmright" >捐赠报道</a></li>
-                                <li><a  href="<?= URL::site('admin_content/index?type=4') ?>"  target="frmright" >捐赠展示</a></li>
-                                <li><a  href="<?= URL::site('admin_content/index?type=8') ?>"  target="frmright" >捐赠途径</a></li>
-                                <li><a  href="<?= URL::site('admin_content/index?type=7') ?>"  target="frmright" >年度捐赠指南</a></li>
-
-
+                                <li><a  href="<?= URL::site('admin_content/index?type=1') ?>"  target="frmright" >捐赠报道</a></li>
+                                <li><a  href="<?= URL::site('admin_content/index?type=2') ?>"  target="frmright" >捐赠感言</a></li>
+                                <li><a  href="<?= URL::site('admin_content/index?type=3') ?>"  target="frmright" >捐赠展示</a></li>
+                                <li><a  href="<?= URL::site('admin_content/index?type=4') ?>"  target="frmright" >捐赠途径</a></li>
 
                             </ul>
                         </div>
