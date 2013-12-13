@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" src="../internal.js"></script>
+    <link rel="stylesheet" href="image.css" type="text/css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div id="imageTab" >
+            <div id="tabHeads" class="tabhead" style="display: none">
+                <span tabSrc="local" class="focus"><var id="lang_tab_local"></var></span>
+                <span tabSrc="remote"  style="display: none"><var id="lang_tab_remote"></var></span>
+                <span tabSrc="imgManager" style="display: none"><var id="lang_tab_imgManager"></var></span>
+                <span tabSrc="imgSearch" style="display: none"><var id="lang_tab_imgSearch"></var></span>
+            </div>
+            <div id="tabBodys" class="tabbody" style="border: none;padding: 5px">
+                <div id="local" class="panel">
+                    <div>
+<div style="padding:10px 8px 2px 10px">添加水印：<input type="radio" name="shuiyin" id="bujiashuiyinba" value="0" checked="checked" onclick="addshuiyin('no')" />&nbsp;<label for="bujiashuiyinba">不添加</label> &nbsp;<input type="radio" name="shuiyin" id="jiashuiyinba" value="1"  onclick="addshuiyin('yes')"  />&nbsp;<label for="jiashuiyinba">添加</label></div>
+<div style="padding:5px 10px">分享到更多位置：<select onchange='get_albums(this.options[this.selectedIndex].value)'><option>选择分享位置...</option><option value="my_album" style="color:#333">我的相册</option><option value="sign_event" style="color:#f30">我参加过的活动</option><option value="joined_aa" style="color:#2150D8">已加入的校友会</option><option  value="joined_club" style="color:#8115B7">已加入的俱乐部</option><option   value="joined_classroom" style="color:#0D711C">已加入的班级</option><option   value="main_aa" style="color:#0D711C">北航校友会</option></select>&nbsp;<span id="org_box"></span>&nbsp;<span id="album_box"></span><span id="loading"></span></div>
+                    </div>
+                    <div id="flashContainer"></div>
+                    <div><div id="upload" style="display: none" ></div><div id="duiqi" style="display: none"></div><div id="localFloat" style="display: none"></div></div>
+
+
+                    <div class="saveDir" style="display: none">
+                        <var id="lang_savePath" ></var>：<select id="savePath">
+                            <option value="1">upload</option>
+                            <option value="2">upload1</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="remote" class="panel">
+                    <table cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="label"><label for="url"><var id="lang_input_url"></var></label></td>
+                            <td><input id="url" type="text"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="width"><var id="lang_input_width"></var></label></td>
+                            <td><input type="text" id="width"/> px</td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="height"><var id="lang_input_height"></var></label></td>
+                            <td><input type="text" id="height"/> px</td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="border"><var id="lang_input_border"></var></label></td>
+                            <td><input type="text" id="border"/> px</td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="vhSpace"><var id="lang_input_vhspace"></var></label></td>
+                            <td><input type="text" id="vhSpace"/> px</td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label for="title"><var id="lang_input_title"></var></label></td>
+                            <td><input type="text" id="title"/></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><var id="lang_input_remoteAlign"></var></td>
+                            <td id="remoteFloat"></td>
+                        </tr>
+                    </table>
+
+                    <div id="preview"></div>
+                    <div class="lock"><input id="lock" type="checkbox" checked="checked"></div>
+                </div>
+
+                <div id="imgManager" class="panel">
+                    <div id="imageList"><var id="lang_imgLoading"></var></div>
+                </div>
+                <div id="imgSearch" class="panel">
+                    <table style="margin-top: 5px;">
+                        <tr>
+                            <td width="200"><input id="imgSearchTxt" type="text" /></td>
+                            <td width="65">
+                                <select id="imgType">
+                                    <!--具体内容值将由国际化组件动态填充-->
+                                    <option value="&s=4&z=0"></option>
+                                    <option value="&s=1&z=19"></option>
+                                    <option value="&s=2&z=0"></option>
+                                    <option value="&s=3&z=0"></option>
+                                </select>
+                            </td>
+                            <td width="80"><input id="imgSearchBtn" type="button"  /></td>
+                            <td width="80"><input id="imgSearchReset" type="button" /></td>
+                        </tr>
+                    </table>
+                    <div id="searchList"></div>
+                </div>
+                <iframe id="maskIframe" src="about:blank" scrolling="no" frameborder="no"></iframe>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/static/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../tangram.js"></script>
+    <script type="text/javascript" src="image.js"></script>
+    <script type="text/javascript" src="image_rendor_config.js"></script>
+</body>
+</html>

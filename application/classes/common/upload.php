@@ -11,7 +11,7 @@
 class Common_Upload {
 
     //上传附件
-    public static function attachedfile($file_data=null, $fileSize=50) {
+    public static function attachedfile($file_data=null, $fileSize=150) {
 
         //上传配置
         $config = array(
@@ -85,7 +85,7 @@ class Common_Upload {
         //上传配置
         $config = array(
             'fileType' => array(".gif", ".png", ".jpg", ".jpeg", ".bmp"), //文件允许格式
-            'fileSize' => 5000, //文件大小限制，单位KB
+            'fileSize' => 50, //文件大小限制，单位M
             'mini' => array('width' => 100, 'height' => 100),
             'thumbnail' => array('width' => 150, 'height' => 150),
             'bmiddle' => array('width' => 640, 'height' => 640),
@@ -123,7 +123,7 @@ class Common_Upload {
             $original_name = basename($file_data["name"], $file_extend);
 
             //验证文件大小
-            $file_size = 1024 * $config['fileSize'];
+            $file_size = 1024 * 1024 * $config['fileSize'];
             if ($file_data["size"] > $file_size) {
                 $error = "图片大小超出最大限制！";
             }
