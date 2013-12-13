@@ -55,15 +55,15 @@ if ($_URI == 'user/login') {
                     <div class="outer">
                         <div class="inner">
                             <ul>
-        <li class="first current"><a href="/" <?= $_C == 'main' || $_C == 'index' ? 'class="cur" ' : '' ?><?= $_C == 'news' ? 'class="nonebg" ' : '' ?>>首页</a></li>
-        <li><a href="<?= URL::site('news') ?>" <?= $_C == 'news' ? 'class="cur" ' : '' ?><?= $_C == 'aa' || $_C == 'aa_home' ? 'class="nonebg" ' : '' ?>>新闻中心</a></li>
-        <li><a href="<?= URL::site('aa/branch') ?>" <?= $_C == 'aa' || $_C == 'aa_home' ? 'class="cur" ' : '' ?><?= $_C == 'event' ? 'class="nonebg" ' : '' ?>>校友组织</a></li>
-        <li><a href="<?= URL::site('event') ?>" <?= $_C == 'event' ? 'class="cur" ' : '' ?><?= $_C == 'classroom' || $_C == 'classroom_home' ? 'class="nonebg" ' : '' ?>>校友活动</a></li>
-        <li><a href="<?= URL::site('classroom') ?>" <?= $_C == 'classroom' || $_C == 'classroom_home' ? 'class="cur" ' : '' ?><?= $_C == 'bbs' ? 'class="nonebg" ' : '' ?>>班级录</a></li>
-       <li> <a href="<?= URL::site('bbs/list') ?>" <?= $_C == 'bbs' ? 'class="cur" ' : '' ?><?= $_C == 'people' ? 'class="nonebg" ' : '' ?>>交流园地</a></li>
-        <li><a href="<?= URL::site('people') ?>" <?= $_C == 'people' ? 'class="cur" ' : '' ?><?= $_C == 'donate' ? 'class="nonebg" ' : '' ?>>北航校友</a></li>
-        <li><a href="<?= URL::site('donate') ?>" <?= $_C == 'donate' ? 'class="cur" ' : '' ?><?= $_C == 'publication' ? 'class="nonebg" ' : '' ?>>校友捐赠</a></li>
-        <li><a href="<?= URL::site('publication') ?>" <?= $_C == 'publication' ? 'class="cur" ' : '' ?> class="nonebg" >校友刊物</a></li>
+        <li <?= $_C == 'main' || $_C == 'index' ? 'class="first current" ' : 'class="first" ' ?>><a href="/" >首页</a></li>
+        <li <?= $_C == 'news'? 'class="current" ' : '' ?>><a href="<?= URL::site('news') ?>" >新闻中心</a></li>
+        <li <?= $_C == 'aa'? 'class="current" ' : '' ?>><a href="<?= URL::site('aa/branch') ?>" >校友组织</a></li>
+        <li <?= $_C == 'event'? 'class="current" ' : '' ?>><a href="<?= URL::site('event') ?>" >校友活动</a></li>
+        <li <?= $_C == 'classroom'? 'class="current" ' : '' ?>><a href="<?= URL::site('classroom') ?>" >班级录</a></li>
+        <li <?= $_C == 'bbs'? 'class="current" ' : '' ?>> <a href="<?= URL::site('bbs/list') ?>" >交流园地</a></li>
+        <li <?= $_C == 'people'? 'class="current" ' : '' ?>><a href="<?= URL::site('people') ?>" >北航校友</a></li>
+        <li <?= $_C == 'donate'? 'class="current" ' : '' ?>><a href="<?= URL::site('donate') ?>" >校友捐赠</a></li>
+        <li <?= $_C == 'publication'? 'class="current" ' : '' ?>><a href="<?= URL::site('publication') ?>" >校友刊物</a></li>
                             </ul>
                             <span class="total"></span>
                         </div>
