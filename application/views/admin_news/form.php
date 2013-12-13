@@ -111,7 +111,7 @@ if ($news) {
         </tr>
 
         <tr>
-            <td colspan="2" style="padding-left:20px">1、首页图片，请上传：663*185px 规格大小图片 </td>
+            <td colspan="2" style="padding-left:20px">1、首页图片，请上传：663*185px 规格大小图片 <br>2、头条新闻缩略图，将自动使用正文中上传的第一张图片，请勿直接从其他地方拷贝新闻图片</td>
         </tr>
 
         <tr>
