@@ -57,7 +57,7 @@
             <td class="field">上传pdf：</td>
             <td>
                 <input type="hidden" name="pdf" id="filepath2" value="<?= $publication['pdf'] ?>" />
-                <iframe  id="upfileframe2" name="upfileframe2" scrolling="no" style="width:500px; height:30px; display:inline" frameborder="0" src="<?= URL::site('upload/frame?msg=pdf文件不大于50M') ?>"></iframe>
+                <iframe  id="upfileframe2" name="upfileframe2" scrolling="no" style="width:500px; height:30px; display:inline" frameborder="0" src="<?= URL::site('upload/frame?msg=单个pdf文件不大于100M') ?>"></iframe>
                 <div id="uploading2" style="display:none; color:#3993E0;width:600px; height:30px;"><img src="/static/images/loading4.gif"  hspace="4" align="absmiddle"  />正在上传中，请稍候...</div>
             </td>
         </tr>

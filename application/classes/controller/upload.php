@@ -16,7 +16,7 @@ class Controller_Upload extends Layout_Main {
         //上传配置
         $config = array(
             "fileType" => array(".rar", ".zip", ".doc", ".docx", '.xls', '.wps', ".pdf", ".txt", ".swf", ".wmv", '.jpg', '.png', '.jpeg', '.mp3', '.ppt', '.pptx', '.avi', '.rmvb', '.wmv', '.flv', '.rm', '.psd', '.ipa'), //文件允许格式
-            'fileSize' => 50, //文件大小限制，单位M
+            'fileSize' => 120, //文件大小限制，单位M
         );
 
         //文件上传状态,当成功时返回SUCCESS，其余值将直接返回对应字符窜并显示在图片预览框，同时可以在前端页面通过回调函数获取对应字符窜
@@ -202,7 +202,7 @@ class Controller_Upload extends Layout_Main {
         //上传配置
         $config = array(
             "fileType" => array(".rar", ".zip", ".doc", ".docx", '.xls', '.wps', ".pdf", ".txt", ".swf", ".wmv", '.jpg', '.png', '.jpeg', '.mp3', '.ppt', '.pptx', '.avi', '.rmvb', '.wmv', '.flv', '.rm', '.psd', '.ipa'), //文件允许格式
-            'fileSize' => 50, //文件大小限制，单位M
+            'fileSize' => 120, //文件大小限制，单位M
         );
 
         //自动创建目录

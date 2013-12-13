@@ -10,7 +10,7 @@ class Model_Publication {
         'Upload::valid' => array(),
         'Upload::not_empty' => array(),
         'Upload::type' => array('Upload::type' => array('pdf', 'txt', 'gif', 'jpg', 'jpeg', 'png')),
-        'Upload::size' => array('70M')
+        'Upload::size' => array('100M')
     );
     //刊物类型
     static $pub_type = array(
