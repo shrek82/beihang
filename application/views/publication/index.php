@@ -2,6 +2,7 @@
 <div id="main_left">
     <p><img src="/static/images/publication_title.gif"></p>
     <div id="pub_list">
+        <?php if($publication):?>
         <ul>
             <?php foreach ($publication AS $p): ?>
                 <li>
@@ -13,6 +14,9 @@
                 </li>
             <?php endforeach; ?>
         </ul>
+        <?php else:?>
+        <div class="nodate">暂时还没有内容</div>
+        <?php endif?>
         <div class="clear"></div>
         <div><?= $pager ?></div>
     </div>
