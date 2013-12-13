@@ -15,7 +15,7 @@
             <?php endforeach; ?>
         </ul>
         <?php else:?>
-        <div class="nodate">暂时还没有内容</div>
+        <div style="color: #999;padding: 10px">暂时还没有内容</div>
         <?php endif?>
         <div class="clear"></div>
         <div><?= $pager ?></div>
