@@ -23,7 +23,7 @@
 <!--俱乐部 -->
 <div id="con_one_4" class="tab_content" >
     <ul class="aa_club">
-        <li>暂无俱乐部</li>
+        <li>稍候呈现，谨请关注！</li>
     </ul>
 </div>
 <!--//俱乐部 -->
