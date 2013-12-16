@@ -34,9 +34,17 @@
             <div style="font-size:12px; color:#393; height:25px; line-height:25px">文件上传成功！<a href="<?= URL::site('upload/frame?msg=' . $msg) ?>" style="font-size:12px;text-decoration:none; color:#393">点击重新上传</a></div>
             <script language="javascript">
                 //向表单返回数据
-                parent.document.getElementById("uploading2").style.display = "none";//隐藏loging
-                parent.document.getElementById("upfileframe2").style.display = "block";//显示上传窗口
-                parent.document.getElementById("filepath2").value = "<?= $file_path ?>";//上传成功后返回文件路径
+                if (parent.document.getElementById("uploading2")) {
+                    parent.document.getElementById("uploading2").style.display = "none";//隐藏loging
+                    parent.document.getElementById("upfileframe2").style.display = "block";//显示上传窗口
+                    parent.document.getElementById("filepath2").value = "<?= $file_path ?>";//上传成功后返回文件路径
+                }
+                else {
+                    parent.document.getElementById("uploading").style.display = "none";//隐藏loging
+                    parent.document.getElementById("upfileframe").style.display = "block";//显示上传窗口
+                    parent.document.getElementById("filepath").value = "<?= $file_path ?>";//上传成功后返回文件路径
+                }
+
                 setTimeout(function() {
                     window.location.href = "<?= URL::site('upload/frame?msg=' . $msg) ?>";
                 }, 900000);
