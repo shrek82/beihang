@@ -109,6 +109,7 @@
                             <ul>
                                 <li><a  href="<?= URL::site('admin_aa/index') ?>"  target="frmright" >地方校友会</a></li>
                                 <li><a  href="<?= URL::site('admin_aa/index?class=学院') ?>"  target="frmright" >学院校友会</a></li>
+                                <li><a  href="<?= URL::site('admin_aa/index?class=行业分会') ?>"  target="frmright" >行业分会</a></li>
                                 <li><a  href="<?= URL::site('admin_aa/form') ?>"  target="frmright" >添加校友会</a></li>
                                 <li><a  href="<?= URL::site('admin_aa/applyManager') ?>"  target="frmright" >加入申请</a></li>
                                 <li><a  href="<?= URL::site('admin_club/index') ?>"  target="frmright" >俱乐部</a></li>

@@ -6,7 +6,7 @@
 
         <tr>
             <td class="field" style="width:15%">校友会分类：</td>
-            <td><input name="class" type="radio" value="地方校友会" <?= $aa['class'] == '地方校友会' ? 'checked' : ''; ?>> 地方校友会&nbsp;&nbsp;&nbsp;&nbsp;<input name="class" type="radio" value="学院" <?= $aa['class'] == '学院' ? 'checked' : ''; ?>>学院</td>
+            <td><input name="class" type="radio" value="地方校友会" <?= $aa['class'] == '地方校友会' ? 'checked' : ''; ?>> 地方校友会&nbsp;&nbsp;<input name="class" type="radio" value="学院" <?= $aa['class'] == '学院' ? 'checked' : ''; ?>>学院 &nbsp;&nbsp;<input name="class" type="radio" value="行业分会" <?= $aa['class'] == '行业分会' ? 'checked' : ''; ?>>行业分会</td>
         </tr>
 
         <tr>

@@ -16,6 +16,7 @@
         <li><a href="<?= URL::site('aa') ?>" id="one1"  >校友总会</a></li>
         <li><a href="<?= URL::site('aa/branch') ?>" id="one2"   class="cur">地方校友会</a></li>
         <li><a href="<?= URL::site('aa/institute') ?>" id="one3" >院系分会</a></li>
+        <li><a href="<?=URL::site('aa/industry')?>"  >行业分会</a></li>
         <li><a href="<?= URL::site('aa/club') ?>" id="one4" >俱乐部</a></li>
     </ul>
 </div>

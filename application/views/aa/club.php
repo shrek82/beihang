@@ -16,14 +16,21 @@
         <li><a href="<?= URL::site('aa') ?>" id="one1"  >校友总会</a></li>
         <li><a href="<?= URL::site('aa/branch') ?>" id="one2"   >地方校友会</a></li>
         <li><a href="<?= URL::site('aa/institute') ?>" id="one3" >院系分会</a></li>
+        <li><a href="<?=URL::site('aa/industry')?>"  >行业分会</a></li>
         <li><a href="<?= URL::site('aa/club') ?>" id="one4" class="cur">俱乐部</a></li>
     </ul>
 </div>
 
 <!--俱乐部 -->
 <div id="con_one_4" class="tab_content" >
-    <ul class="aa_club">
-        <li>稍候呈现，谨请关注！</li>
-    </ul>
+       <?php if (!$club): ?>
+        <p class="nodata">很抱歉，暂时还没有俱乐部。</p>
+    <? else: ?>
+        <ul class="aa_institution">
+            <?php foreach ($club as $i): ?>
+            <li><a href="<?= URL::site('club_home?id=' . $i['id']); ?>" target="_blank"><?= $i['name'] ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif ?>
 </div>
 <!--//俱乐部 -->

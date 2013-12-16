@@ -13,10 +13,11 @@
 
 <div class="blue_tab" style="margin: 15px 20px">
     <ul>
-	<li><a href="<?=URL::site('aa')?>" id="one1"  class="cur">校友总会</a></li>
-	<li><a href="<?=URL::site('aa/branch')?>" id="one2"   >地方校友会</a></li>
-	<li><a href="<?=URL::site('aa/institute')?>" id="one3" >院系分会</a></li>
-	<li><a href="<?=URL::site('aa/club')?>" id="one4" >俱乐部</a></li>
+	<li><a href="<?=URL::site('aa')?>" class="cur">校友总会</a></li>
+	<li><a href="<?=URL::site('aa/branch')?>"  >地方校友会</a></li>
+	<li><a href="<?=URL::site('aa/institute')?>"  >院系分会</a></li>
+                <li><a href="<?=URL::site('aa/industry')?>"  >行业分会</a></li>
+	<li><a href="<?=URL::site('aa/club')?>" >俱乐部</a></li>
     </ul>
 </div>
 <!--校友总会 -->
