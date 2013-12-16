@@ -158,6 +158,11 @@ class Controller_Aa_Home extends Layout_Aa {
         $condition = array('aa_id' => $this->_id, 'page_size' => 4);
         $album_data = Db_Album::getAlbums($condition);
         $view['albums'] = $album_data['albums'];
+        
+        $debug=  Arr::get($_GET,'debug');
+        if($debug){
+            echo Kohana::debug($view);
+        }
         $this->_render('_body', $view);
     }
 
