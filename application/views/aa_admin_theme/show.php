@@ -15,7 +15,7 @@
         </tr>
         <?php foreach ($shows as $key => $s): ?>
             <tr id="s_<?= $s['id'] ?>" class="<?= (($key + 1) % 2) == 0 ? 'even_tr' : 'odd_tr'; ?>">
-                <td style="text-align:left;padding: 10px"><a href="<?= $s['url'] ?>" title="点击测试链接地址" target="_blank"><img src="<?= $s['filename']; ?>" style="width:150px;border-width:0" /></a></td>
+                <td style="text-align:left;padding: 10px"><a href="<?= $s['url'] ?>" title="点击测试链接地址" target="_blank"><img src="/<?= $s['filename']; ?>" style="width:150px;border-width:0" /></a></td>
                 <td style="text-align:left"><a href="<?= $s['url'] ?>" title="点击测试链接地址" target="_blank"><?= $s['title'] ?></a></td>
                 <td style="text-align:center"><input type="checkbox" onclick="setDisplay(<?= $s['id'] ?>)" <?= !empty($s['is_display']) ? 'checked' : '' ?>  /></td>
                 <td style="text-align:center"><a href="<?= URL::query(array('show_id' => $s['id'])) ?>">修改</a></td>
