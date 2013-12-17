@@ -75,7 +75,6 @@
         <ul class="con_list2">
             <? $display_event = $_THEME['event_limit']; ?>
             <?php foreach ($event as $key => $e): ?>
-                <? if ($key <= $display_event) break; ?>
                 <li style="padding:2px 0">
                     <?= $e['type'] ? $e['type'] : '无分类'; ?>&nbsp;<a href="<?= Db_Event::getLink($e['id'], $e['aa_id'], $e['club_id']) ?>"  target="_blank" <?= $e['is_fixed'] ? 'style="color:#f30"' : ''; ?>><?= Text::limit_chars($e['title'], 35, '..') ?></a><?php if ($e['sign_num'] > 0): ?>&nbsp;&nbsp;(已有<font style="color:#1F9800"><?= $e['sign_num'] ?></font>人参与)<?php endif; ?>
                     <span class="date">

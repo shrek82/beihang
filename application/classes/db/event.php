@@ -86,7 +86,7 @@ class Db_Event {
 
         $aa_id = isset($condition['aa_id']) ? $condition['aa_id'] : null;
         $club_id = isset($condition['club_id']) ? $condition['club_id'] : null;
-        $page = isset($condition['page'])&&$condition['page'] ? $condition['page'] : 15;
+        $page = isset($condition['page'])&&$condition['page'] ? $condition['page'] : 1;
         $limit = isset($condition['limit'])&&$condition['limit'] ? $condition['limit'] : 15;
         $page_size = isset($condition['page_size']) ? $condition['page_size'] : 25;
         $start_date = isset($condition['start_date']) ? $condition['start_date'] : null;
@@ -115,6 +115,8 @@ class Db_Event {
                 ->select(DB::expr('IF(e.is_club_fixed=1 && e.finish >= now(),1,0) AS is_club_start_fixed'))
                 ->from(array('event', 'e'))
                 ->where('e.is_closed', '=', 0);
+        
+
 
         //校友会信息
         if ($aa_info) {
@@ -163,8 +165,8 @@ class Db_Event {
                     ->where('e.poster_path', 'IS NOT', NULL)
                     ->where('e.poster_path', '<>', '');
         }
-
-
+        
+ 
         //根据分类筛选
         if ($cat) {
             //我加入的组织
@@ -222,9 +224,9 @@ class Db_Event {
         if ($limit) {
             $query = $query->limit($limit);
         }
-
+        
         $query = $query->order_by(DB::expr($orderby))->offset($offset);
-
+        
         //返回sql语句
         if ($get_sql) {
             return $query;

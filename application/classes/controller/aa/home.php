@@ -85,12 +85,9 @@ class Controller_Aa_Home extends Layout_Aa {
                             ->execute()->as_array();
         }
 
-
-
         // 即将开始的活动
         $condition = array('aa_id' => $this->_id, 'limit' => $this->_theme['event_limit']);
         $view['event'] = Db_Event::getEvents($condition);
-
         //近期活动标签
         $near_event_tags = array();
         if ($view['event'] AND $this->_id == 1) {
@@ -158,11 +155,6 @@ class Controller_Aa_Home extends Layout_Aa {
         $condition = array('aa_id' => $this->_id, 'page_size' => 4);
         $album_data = Db_Album::getAlbums($condition);
         $view['albums'] = $album_data['albums'];
-        
-        $debug=  Arr::get($_GET,'debug');
-        if($debug){
-            echo Kohana::debug($view);
-        }
         $this->_render('_body', $view);
     }
 
