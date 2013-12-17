@@ -13,7 +13,7 @@
 	<tr class="thead">
 	    <td>校名</td>
 	    <td>职位</td>
-	    <td>姓名</td>
+            <td style="width:50px">姓名</td>
 	    <td>任期</td>
 	</tr>
     <?php foreach($president[$key] as $k=> $p):?>
