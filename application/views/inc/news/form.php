@@ -31,7 +31,11 @@ if ($news) {
         </tr>
 
     </table>
-    <div style="width:99%;height:300px"><textarea id="content" name="content" style="width:99%;height:260px"><?= @$news['content'] ?></textarea></div>
+    <div style="width:99%;height:380px"><textarea id="content" name="content" style="width:99%;height:260px"><?= @$news['content'] ?></textarea>
+                    <p style="margin:10px 0; color: #999">
+                    说明：按回车(Enter)为添加段落，段落开始位置自动增加标准缩进，请勿再次添加空格，按Shift+Enter为换行。
+                </p>
+    </div>
     <div><label>开放评论</label>
         <input type="radio" name="is_comment" id="is_comment" value="1" style="vertical-align:middle;" <?= (!$news) || $news['is_comment'] == '1' ? 'checked' : '' ?>> <label for="is_comment">允许评论</label>
         <input type="radio" name="is_comment" id="is_comment" value="0" style="vertical-align:middle;" <?= $news['is_comment'] == '0' ? 'checked' : '' ?>> <label for="is_comment">禁止评论</label>
@@ -54,9 +58,14 @@ if ($news) {
     </div>
 </form>
 
+
 <?=
 View::ueditor('content', array(
-    'toolbars' => Kohana::config('ueditor.common')
+    'toolbars' => Kohana::config('ueditor.common'),
+    'minFrameHeight' => 450,
+    'autoHeightEnabled' => 'false',
+    'enterTag'=>'p',
+    'initialStyle' => '"body{font-size:14px;} p{text-indent:28px;margin-bottom:15px}"'
 ));
 ?>
 

@@ -88,16 +88,19 @@
         <div id="aa_club_content_one2" class="tab_content" style="display:none">
             <ul style="margin:4px 8px">
                 <?php foreach ($institution as $i => $aa): ?>
-                    <li><a href="#"><?= $aa['name'] ?>校友会</a></li>
+                    <li><a href="/aa_home?id=<?=$aa['id']?>" target="'_blank"><?= $aa['name'] ?>校友会</a></li>
                 <?php endforeach; ?>
             </ul>
-            <p class="more"><a href="/aa/club">>>更多</a></p>
+            <p class="more"><a href="/aa/institute">>>更多</a></p>
         </div>
         <div id="aa_club_content_one3" class="tab_content" style="display:none">
-            <ul>
-                <li><a href="#" target="_blank">暂无俱乐部</a></li>
+            <ul style="margin:4px 8px">
+                <?php foreach ($club as $i => $c): ?>
+                    <li><a href="/club_home?id=<?=$c['id']?>"  target="'_blank"><?= $c['name'] ?></a></li>
+                <?php endforeach; ?>
             </ul>
-            <p class="more"><a href="/aa/">>>更多</a></p>
+            </ul>
+            <p class="more"><a href="/aa/club">>>更多</a></p>
         </div>
 
         <p class="sidebar_title" style="border-width:1px 0">推荐活动</p>

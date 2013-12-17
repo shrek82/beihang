@@ -180,6 +180,10 @@ View::ueditor('content', array(
         }
         news_form.send();
     }
+    
+    function post_my_newthing() {
+        alert('建设当中，稍候呈现！');
+    }
 </script>
 
 

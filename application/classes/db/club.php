@@ -18,9 +18,15 @@ class Db_Club {
                 ->select(DB::expr('(SELECT COUNT(m.id) FROM club_member m WHERE m.club_id = c.id) AS mcount'))
                 ->from(array('club','c'));
 
-        if($aa_id){
+        if($aa_id===0){
+            $clubs->where('c.aa_id','=',0);
+        }
+        elseif($aa_id>0){
             $clubs->where('c.aa_id','=',$aa_id);
         }
+        else{
+        }
+        
        $clubs=$clubs->limit($limit)
                 ->order_by('mcount', 'DESC')
                 ->execute()

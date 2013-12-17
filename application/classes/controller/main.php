@@ -32,11 +32,10 @@ class Controller_Main extends Layout_Main {
         //推荐俱乐部
         $view['club'] = $this->_cache->get('home_club');
         if (!$view['club'] OR $update_cache) {
-            $view['club'] = Db_Club::topClub(6);
+            $view['club'] = Db_Club::topClub(6,0);
             $this->_cache->set('home_club', $view['club'], 3600);
         }
-
-
+        
         //推荐活动
         $view['events'] = $this->_cache->get('home_eventss');
         if (!$view['events'] OR $update_cache) {
