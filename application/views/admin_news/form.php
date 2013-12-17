@@ -4,6 +4,7 @@ $action = 'news/create';
 if ($news) {
     $action = 'news/update';
 }
+
 ?>
 
 <form action="<?= URL::site($action) ?>" id="news_form" method="post"  >
@@ -21,7 +22,7 @@ if ($news) {
                 <?php else: ?>
                     <select name="category_id">
                         <?php foreach ($news_category as $c): ?>
-                            <option value="<?= $c['id'] ?>"  <?= $news['news_category'] === $c['id'] ? 'selected' : '' ?>><?= $c['name'] ?></option>
+                            <option value="<?= $c['id'] ?>"  <?= $news['news_category'] === $c['id']||$c['id'] == $cid? 'selected' : '' ?>><?= $c['name'] ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </select>
@@ -29,7 +30,7 @@ if ($news) {
             </td>
         </tr>
 
-        <tr>
+        <tr style="display: none">
             <td class="field">所属专题：</td>
             <td>
                 <select name="special_id">
@@ -89,22 +90,14 @@ if ($news) {
             <td><input type="text" name="create_at" value="<?= $news['create_at'] ? $news['create_at'] : date('Y-m-d H:i:s') ?>"  style="width:450px" class="input_text" /><span style="color:#999"> </span></td>
         </tr>
         <tr>
-            <td class="field">同时发布到：</td>
-            <td>
-                <input type="checkbox" name="is_people_news" id="is_people_news" value="1" style="vertical-align:middle;" > <label for="is_people_news">求是群芳</label>
-            </td>
-        </tr>
-        <tr>
             <td class="field">新闻相关属性：</td>
             <td>
                 <input type="checkbox" name="is_release" id="is_release" value="1" style="vertical-align:middle;" <?= !$news || $news['is_release'] ? 'checked' : '' ?>> <label for="is_release">通过审核</label>
-                <input type="checkbox" name="is_focus" value="1" style="vertical-align:middle;" id="is_focus"  <?= $news['is_focus'] ? 'checked' : '' ?>> <label for="is_focus">首页焦点新闻</label>
-                <input type="checkbox" name="is_top" value="1" style="vertical-align:middle;" id="is_top"  <?= $news['is_top'] ? 'checked' : '' ?>> <label for="is_top">头条新闻(大标题新闻)</label>
+                <input type="checkbox" name="is_focus" value="1" style="vertical-align:middle;" id="is_focus"  <?= $news['is_focus'] ? 'checked' : '' ?>> <label for="is_focus">首页幻灯片新闻</label>
+                <input type="checkbox" name="is_top" value="1" style="vertical-align:middle;" id="is_top"  <?= $news['is_top'] ? 'checked' : '' ?>> <label for="is_top">标题+缩略图新闻</label>
                 <input type="checkbox" name="is_comment" id="is_comment" value="1" style="vertical-align:middle;" <?= !$news || $news['is_comment'] ? 'checked' : '' ?>> <label for="is_comment">开放评论</label>
             </td>
         </tr>
-
-
 
         <tr>
             <td colspan="2" class="td_title">温馨提示</td>

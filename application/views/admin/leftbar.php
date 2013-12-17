@@ -74,9 +74,12 @@
                             <ul>
                                 <li><a  href="<?= URL::site('admin_news/index') ?>"  target="frmright" >新闻管理</a></li>
                                 <li><a  href="<?= URL::site('admin_news/form') ?>"  target="frmright" >添加新闻</a></li>
+                                <?php foreach($news_categorys as $c):?>
+                                <li><a  href="/admin_news/index?cid=<?=$c['id']?>"  target="frmright" ><?=$c['name']?></a></li>
+
+                                <?php endforeach;?>
                                 <li><a  href="<?= URL::site('admin_news/category') ?>"  target="frmright" >新闻分类</a></li>
-                                <li><a  href="<?= URL::site('admin_news/special') ?>"  target="frmright" >新闻专题</a></li>
-                                <li><a  href="<?= URL::site('admin_content/index?type=17') ?>"  target="frmright" >首页静态图片</a></li>
+                                
                             </ul>
                         </div>
 
@@ -182,7 +185,8 @@
                                 <li><a  href="<?= URL::site('admin_people/index') ?>"  target="frmright" >院士风采</a></li>
                                 <li><a  href="<?= URL::site('admin_people/president') ?>"  target="frmright" >历任校长</a></li>
                                 <li><a  href="<?= URL::site('admin_people/presidentForm') ?>"  target="frmright" >新增校长</a></li>
-                                <li><a  href="<?= URL::site('admin_people/newsForm') ?>"  target="frmright" >添加新闻</a></li>
+                                <li><a  href="/admin_news/index?cid=5"  target="frmright" >北航校友</a></li>
+                                <li><a  href="/admin_news/form?cid=5"  target="frmright" >添加新闻</a></li>
                             </ul>
                         </div>
 

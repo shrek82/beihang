@@ -18,6 +18,7 @@ class Controller_Admin_News extends Layout_Admin {
         // 新闻所属筛选{main:总会,aa:地方校友会}
         $from = Arr::get($_GET, 'from');
         $release = Arr::get($_GET, 'release');
+        $cid = Arr::get($_GET, 'cid');
         $view['release'] = $release;
         $view['from'] = $from;
         $q = urldecode(Arr::get($_GET, 'q'));
@@ -91,6 +92,11 @@ class Controller_Admin_News extends Layout_Admin {
                 $count->andWhere('n.author_name LIKE ?', '%' . $q . '%');
                 $news->andWhere('n.author_name LIKE ?', '%' . $q . '%');
             }
+        }
+        
+        if ($cid ) {
+            $count->andWhere('n.category_id=?',$cid);
+            $news->andWhere('category_id=?',$cid);
         }
 
         if (!$_GET) {
@@ -189,6 +195,7 @@ class Controller_Admin_News extends Layout_Admin {
     //添加或修改内容
     function action_form() {
         $id = Arr::get($_GET, 'id', 0);
+        $cid = Arr::get($_GET, 'cid');
         $view['err'] = '';
 
         $news_special = Doctrine_Query::create()
@@ -218,6 +225,7 @@ class Controller_Admin_News extends Layout_Admin {
                 ->fetchOne(array(), Doctrine_Core::HYDRATE_ARRAY);
 
         $view['news'] = $news;
+        $view['cid'] = $cid;
         $this->_render('_body', $view);
     }
 
@@ -397,7 +405,7 @@ class Controller_Admin_News extends Layout_Admin {
         //操作日志
         $log_data = array();
         $log_data['type'] = '删除新闻分类';
-        $log_data['description'] = '删除了新闻分类“' . $category['name'] . '”，包含其中' . $news_count . '条新闻';
+        $log_data['description'] = '删除了新闻分类“' . $category['name'] . '”，及其所以该分类新闻';
         Common_Log::add($log_data);
     }
 

@@ -9,7 +9,7 @@ LOGO：
     <img src="/static/images/loading4.gif"  hspace="4" align="absmiddle"  />正在上传中，请稍候...</div>
 <input type="hidden" name="logo_path" id="filepath" value="<?= $club['logo_path'] ?>" />
 <iframe  id="upfileframe" name="upfileframe" scrolling="no" style="width:500px; height:30px; display:inline" frameborder="0" src="<?= URL::site('upload/frame?msg=固定大小80*80px') ?>"></iframe>
-<textarea name="intro" id="intro"><?= $club['intro'] ?></textarea>
+<textarea name="intro" id="intro" style="height:300px;width:100%"><?= $club['intro'] ?></textarea>
 <p class="left" style="margin:10px 0"><input onclick="save()" type="submit" id="submit_button" value="确认保存" class="button_blue" /></p>
 </form>
 </div>

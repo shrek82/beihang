@@ -9,7 +9,7 @@ ul.club_box li img:hover{border: 1px solid #D9D8D8;-webkit-box-shadow:2px 2px 2p
     <ul class="club_box">
         <?php foreach ($clubs as $key => $club): ?>
         <li>
-<a href="<?= URL::site('club_home?id=' . $club['id']) ?>" target="_blank" ><img src="<?=$club['logo_path']?$club['logo_path']:'/static/upload/club/default.jpg';?>" alt="<?= $club['name'] ?>LOGO"  /></a><br>
+<a href="<?= URL::site('club_home?id=' . $club['id']) ?>" target="_blank" ><img src="/<?=$club['logo_path']?$club['logo_path']:'/static/upload/club/default.jpg';?>" alt="<?= $club['name'] ?>LOGO"  /></a><br>
 <?=str_replace('俱乐部','',$club['name'])?>(<span style="color:#1F9800"><?= $club['member_num'] ?></span>人)
         </li>
 <?php endforeach; ?>

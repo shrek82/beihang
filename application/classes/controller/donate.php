@@ -104,6 +104,37 @@ class Controller_Donate extends Layout_Main {
 
         $this->_render('_body', compact('name', 'intro', 'faq', 'guide', 'statistics', 'pager'));
     }
+    
+    /**
+      +------------------------------------------------------------------------------
+     * 捐赠项目
+      +------------------------------------------------------------------------------
+     */
+    function action_project() {
+        $name = Arr::get($_GET, 'name');
+        $reports = Doctrine_Query::create()
+                ->select('c.id,c.title,c.create_at')
+                ->from('Content c')
+                ->leftJoin('c.ContentCategory cat')
+                ->where('cat.name="捐赠项目"');
+
+        if ($name) {
+            $reports->addWhere('title LIKE ?', array('%' . $name . '%'));
+        }
+
+        $pager = Pagination::factory(array(
+                    'total_items' => $reports->count(),
+                    'items_per_page' => 20,
+                    'view' => 'pager/common'
+                ));
+
+        $reports = $reports->orderBy('c.create_at DESC')
+                ->offset($pager->offset)
+                ->limit($pager->items_per_page)
+                ->fetchArray();
+        $this->_title('捐赠项目');
+        $this->_render('_body', compact('name', 'reports', 'pager'));
+    }
 
     /**
       +------------------------------------------------------------------------------

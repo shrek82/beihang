@@ -1,4 +1,5 @@
 <?php
+
 /**
   +-----------------------------------------------------------------
  * 名称：管理首页
@@ -31,50 +32,50 @@ class Controller_Admin extends Layout_Admin {
 
         //所有新闻总数
         $view['news_count']['all'] = Doctrine_Query::create()
-                        ->from('News n')
-                        ->count();
+                ->from('News n')
+                ->count();
         //已审核新闻
         $view['news_count']['isRelease'] = Doctrine_Query::create()
-                        ->from('News n')
-                        ->where('is_release=? AND is_draft=?', array(1, 0))
-                        ->count();
+                ->from('News n')
+                ->where('is_release=? AND is_draft=?', array(1, 0))
+                ->count();
         //待审核新闻
         $view['news_count']['notRelease'] = Doctrine_Query::create()
-                        ->from('News n')
-                        ->where('is_release=? AND is_draft=?', array(0, 0))
-                        ->count();
+                ->from('News n')
+                ->where('is_release=? AND is_draft=?', array(0, 0))
+                ->count();
 
         //今日发布新闻
         $view['news_count']['today'] = Doctrine_Query::create()
-                        ->from('News n')
-                        ->where('create_at=curdate() AND is_draft=?', 0)
-                        ->count();
+                ->from('News n')
+                ->where('create_at=curdate() AND is_draft=?', 0)
+                ->count();
 
         //注册校友
         $view['user_count']['all'] = Doctrine_Query::create()
-                        ->select('id')
-                        ->from('User')
-                        ->count();
+                ->select('id')
+                ->from('User')
+                ->count();
         //本月
         $view['user_count']['benyue'] = Doctrine_Query::create()
-                        ->select('id')
-                        ->from('User')
-                        ->where("DATE_FORMAT(reg_at,'%Y%m' ) = DATE_FORMAT( CURDATE() , '%Y%m' )")
-                        ->count();
+                ->select('id')
+                ->from('User')
+                ->where("DATE_FORMAT(reg_at,'%Y%m' ) = DATE_FORMAT( CURDATE() , '%Y%m' )")
+                ->count();
 
         //上月
         $view['user_count']['shangyue'] = Doctrine_Query::create()
-                       ->select('id')
-                        ->from('User')
-                        ->where("PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format(reg_at, '%Y%m' ) ) =1 ")
-                        ->count();
+                ->select('id')
+                ->from('User')
+                ->where("PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format(reg_at, '%Y%m' ) ) =1 ")
+                ->count();
 
         //今日注册
         $view['user_count']['today'] = Doctrine_Query::create()
-                        ->select('id')
-                        ->from('User')
-                        ->where("to_days(reg_at) = to_days(now())")
-                        ->count();
+                ->select('id')
+                ->from('User')
+                ->where("to_days(reg_at) = to_days(now())")
+                ->count();
 
         $this->_render('_body', $view);
     }
@@ -84,9 +85,9 @@ class Controller_Admin extends Layout_Admin {
 
         $id = Arr::get($_GET, 'id');
         $filter = Doctrine_Query::create()
-                        ->from('Filter')
-                        ->where('id = ?', $id)
-                        ->fetchOne();
+                ->from('Filter')
+                ->where('id = ?', $id)
+                ->fetchOne();
 
         if ($_POST) {
             $post['string'] = Arr::get($_POST, 'string');
@@ -101,8 +102,8 @@ class Controller_Admin extends Layout_Admin {
         }
         $view['filter'] = $filter;
         $view['filters'] = Doctrine_Query::create()
-                        ->from('Filter')
-                        ->fetchArray();
+                ->from('Filter')
+                ->fetchArray();
 
         $this->_render('_body', $view);
     }
@@ -111,9 +112,9 @@ class Controller_Admin extends Layout_Admin {
     function action_delFilter() {
         $id = Arr::get($_GET, 'id');
         $del = Doctrine_Query::create()
-                        ->delete('Filter')
-                        ->where('id = ?', $id)
-                        ->execute();
+                ->delete('Filter')
+                ->where('id = ?', $id)
+                ->execute();
         $this->_redirect('admin/filter');
     }
 
@@ -126,7 +127,13 @@ class Controller_Admin extends Layout_Admin {
     //左侧导航
     function action_leftbar() {
         $this->auto_render = FALSE;
-        echo View::factory('admin/leftbar');
+        //新闻分类 
+        $view['news_categorys'] = Doctrine_Query::create()
+                ->from('NewsCategory')
+                ->where('aa_id=0')
+                ->orderBy('order_num ASC')
+                ->fetchArray();
+        echo View::factory('admin/leftbar', $view);
     }
 
 }

@@ -26,6 +26,8 @@
 <a href="<?=URL::site('admin_news/index?from=main');?>"  style="<?=$from=='main'?'font-weight:bold':''?>">总会新闻</a>&nbsp;|&nbsp;
 <a href="<?=URL::site('admin_news/index?from=aa');?>"  style="<?=$from=='aa'?'font-weight:bold':''?>">地方校友会</a>&nbsp;|&nbsp;
 <a href="<?=URL::site('admin_news/index?from=club');?>"  style="<?=$from=='club'?'font-weight:bold':''?>">俱乐部新闻</a>&nbsp;&nbsp;
+<br>
+新闻分类：
 </td>
 </tr>
 </table>

@@ -2,7 +2,7 @@
 $sidebar_links = array(
     // 'donate/statistics' => '捐赠统计',
     'donate/thanks' => '捐赠鸣谢',
-    //'donate/eventFund' => '校友活动基金',
+    'donate/project' => '捐赠项目',
     'donate/reports' => '相关报道',
     'donate/reflections' => '捐赠感言',
     'donate/meth' => '捐赠途径'
