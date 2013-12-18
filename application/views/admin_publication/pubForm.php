@@ -32,6 +32,11 @@
         </tr>
 
         <tr>
+            <td class="field">总第：</td>
+            <td ><input type="text" name="order_num"   style="width:300px" class="input_text"  value="<?= $publication['order_num'] ?>"/> 期&nbsp;&nbsp;<span style="color:#999">例如：10，请填写数字</span></td>
+        </tr>
+        
+        <tr>
             <td class="field">封面图片：</td>
             <td>
                 <input type="hidden" name="cover" id="filepath" value="<?= $publication['cover'] ?>" />

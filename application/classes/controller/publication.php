@@ -18,7 +18,7 @@ class Controller_Publication extends Layout_Main {
             $publication->addWhere('type=?', $type);
         }
 
-        $publication->orderBy('type ASC,issue DESC,id DESC');
+        $publication->orderBy('order_num ASC,id DESC');
 
         $total_pub = $publication->count();
 
@@ -26,7 +26,7 @@ class Controller_Publication extends Layout_Main {
                     'total_items' => $total_pub,
                     'items_per_page' => 12,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['type'] = $type;
         $view['pager'] = $pager;
@@ -103,7 +103,7 @@ class Controller_Publication extends Layout_Main {
                     'total_items' => $total_report,
                     'items_per_page' => 20,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['q'] = $q;
         $view['pager'] = $pager;
@@ -247,8 +247,7 @@ class Controller_Publication extends Layout_Main {
 
         if ($md5 != $key) {
             $view['err'] = '退订失败，校验码错误!';
-        }
-        elseif ($email AND $user_id) {
+        } elseif ($email AND $user_id) {
             $unsubscribe = Doctrine_Query::create()
                     ->from('UnsubscribeEmail')
                     ->where('email=?', $email)
@@ -259,12 +258,10 @@ class Controller_Publication extends Layout_Main {
                 $unsubscribe->user_id = $user_id;
                 $unsubscribe->create_at = date('Y-n-d H:i:s');
                 $unsubscribe->save();
-            }
-            else {
+            } else {
                 $view['err'] = '您已经退订过了，不需要再次退订啦!';
             }
-        }
-        else {
+        } else {
             $view['err'] = '退订失败，请提供邮箱或用户id信息!';
         }
 

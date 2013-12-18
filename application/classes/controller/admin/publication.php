@@ -28,7 +28,7 @@ class Controller_Admin_Publication extends Layout_Admin {
             $publication->where('type=?', $type);
         }
 
-        $publication->orderBy('type ASC,issue DESC,id DESC');
+        $publication->orderBy('order_num ASC,id DESC');
 
         $total_pub = $publication->count();
 
@@ -36,7 +36,7 @@ class Controller_Admin_Publication extends Layout_Admin {
                     'total_items' => $total_pub,
                     'items_per_page' => 15,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['type'] = $type;
         $view['page'] = $page;
@@ -93,7 +93,6 @@ class Controller_Admin_Publication extends Layout_Admin {
         $this->_render('_body', compact('pub_type', 'err', 'publication'));
     }
 
-
     //文章管理
     function action_article() {
         $type = Arr::get($_GET, 'type');
@@ -122,7 +121,7 @@ class Controller_Admin_Publication extends Layout_Admin {
                     'total_items' => $total_content,
                     'items_per_page' => 20,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['type'] = $type;
         $view['publication'] = $publication;
@@ -348,7 +347,7 @@ class Controller_Admin_Publication extends Layout_Admin {
                     'total_items' => $total_report,
                     'items_per_page' => 20,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['q'] = $q;
         $view['pager'] = $pager;
@@ -457,7 +456,7 @@ class Controller_Admin_Publication extends Layout_Admin {
                     'total_items' => $total_content,
                     'items_per_page' => 20,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['type'] = $type;
         $view['publication'] = $publication;

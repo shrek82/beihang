@@ -1,0 +1,91 @@
+options:
+  type: MYISAM
+
+
+#期刊登记表
+Publication:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    type: integer(5)
+    name: string(100)
+    issue: string(100)
+    cover: string(255)
+    pdf: string(255)
+    order_num: integer(6)
+      
+#内容分类表
+PubColumn:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    pub_id: integer(6)
+    col_id: integer(6)
+    name: string(40)
+  relations:
+    Publication:
+      local: pub_id
+      foreign: id
+      foreignAlias: PubColumns
+
+#内容表
+PubContent:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    pub_id: integer(6)
+    col_id: integer(6)
+    title: string(200)
+    content: string
+    user_id: integer(6)
+    author: string(50)
+    page: integer(4)
+    hit: integer(6)
+    create_at: timestamp
+    order_num: integer(6)
+  relations:
+    Publication:
+      local: pub_id
+      foreign: id
+      foreignAlias: PubContents
+    PubColumn:
+      local: col_id
+      foreign: col_id
+      foreignAlias: PubContents
+
+#电子信息报
+EleReport:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    title: string(255)
+    content_path: string(255)
+    create_at: timestamp
+    issue: string(200)
+
+#文章投稿
+PubContribute:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    title: string(200)
+    user_id: integer(6)
+    content: string
+    reply: string
+    is_read: integer(1)
+    create_at: timestamp
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: PubContributes

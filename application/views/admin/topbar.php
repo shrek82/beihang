@@ -123,7 +123,6 @@
                                     'admin_people' => '北航校友',
                                     'admin_publication' => '校友刊物',
                                     'admin_donate' => '校友捐赠',
-                                    'admin_vote' => '投票调查',
                                     'admin_content' => '其他内容',
                                     'admin_links' => '链接管理',
                                 );

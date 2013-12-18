@@ -2,7 +2,7 @@
 
 class Controller_Main extends Layout_Main {
 
-    //public $_dev = TRUE;
+    public $_dev = TRUE;
     //public $_debug = TRUE;
     //首页
     function action_index() {
