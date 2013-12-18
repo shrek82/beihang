@@ -33,9 +33,8 @@ class Controller_News extends Layout_Main {
 
         // 新闻一周推荐排行
         //$view['dig_news'] = Model_News::digRank(8);
-
         // 总会新闻
-        $view['main_news'] = Model_News::get(array('aa_id'=>'main','limit'=>15));
+        $view['main_news'] = Model_News::get(array('aa_id' => 'main', 'limit' => 15));
 
         //新闻分类
         $view['category'] = Doctrine_Query::create()
@@ -122,26 +121,27 @@ class Controller_News extends Layout_Main {
                     ->leftJoin('c.Aa a')
                     ->andWhere('c.aa_id > 0');
         } else {
-            $news->andWhere('c.aa_id = 0');
+            $news->andWhere('c.aa_id = 0 AND c.id<>5');
             //总会新闻分类
             $view['all_category'] = Doctrine_Query::create()
                     ->select('id,name')
                     ->from('NewsCategory')
-                    ->where('aa_id=?', 0)
+                    ->where('aa_id=0  AND id<>5')
                     ->orderBy('order_num ASC')
                     ->fetchArray();
         }
 
         if ($cid) {
             $news->andWhere('c.id = ?', $cid);
-            if ($aa_id == 0)
-            // 总会新闻分类
+            if ($aa_id == 0) {
+                // 总会新闻分类
                 $view['category'] = Doctrine_Query::create()
                         ->select('id,name')
                         ->from('NewsCategory')
                         ->where('aa_id=? AND id = ?', array(0, $cid))
                         ->orderBy('order_num ASC')
                         ->fetchOne(array(), Doctrine_Core::HYDRATE_ARRAY);
+            }
         }
 
         $total_news = $news->count();
@@ -150,7 +150,7 @@ class Controller_News extends Layout_Main {
                     'total_items' => $total_news,
                     'items_per_page' => 25,
                     'view' => 'pager/common'
-                ));
+        ));
 
         $view['news'] = $news->offset($pager->offset)
                 ->limit($pager->items_per_page)
@@ -194,11 +194,11 @@ class Controller_News extends Layout_Main {
 
             //地方校友会新闻
             if ($news_category['aa_id']) {
-                 $this->_redirect('aa_home/newsDetail?id='.$news_category['aa_id'].'&nid='.$id);
+                $this->_redirect('aa_home/newsDetail?id=' . $news_category['aa_id'] . '&nid=' . $id);
             }
             //俱乐部新闻
             if ($news_category['club_id']) {
-                 $this->_redirect('club_home/newsDetail?id='.$news_category['club_id'].'&nid='.$id);
+                $this->_redirect('club_home/newsDetail?id=' . $news_category['club_id'] . '&nid=' . $id);
             }
         }
 
@@ -215,7 +215,6 @@ class Controller_News extends Layout_Main {
         //$prev = Model_News::prev($id);
         //下一篇
         //$next = Model_News::next($id);
-
         //相关新闻
         $relate = Model_News::relate($news);
         // 一周推荐新闻
@@ -227,7 +226,7 @@ class Controller_News extends Layout_Main {
     }
 
     function action_deny() {
-
+        
     }
 
     /**
@@ -279,7 +278,7 @@ class Controller_News extends Layout_Main {
       +------------------------------------------------------------------------------
      */
     function action_fix() {
-
+        
     }
 
     function action_updateicon() {
@@ -313,7 +312,7 @@ class Controller_News extends Layout_Main {
             $news->save();
             echo '<img src="http://zuaa.zju.edu.cn/' . $small_img_path . '">';
         } else {
-
+            
         }
 
         $view['news'] = $news;
@@ -388,12 +387,11 @@ class Controller_News extends Layout_Main {
                 }
 
                 //发布到北航校友新闻栏目
-                if(isset($_POST['is_people_news']) AND $_POST['is_people_news']==1){
-                      $people_news['title']=$post['title'];
-                      $people_news['content']=Arr::get($_POST, 'content');
-                      $people_news['author_name']=Arr::get($_POST, 'author_name');
-                      Model_People::postnews($people_news);
-
+                if (isset($_POST['is_people_news']) AND $_POST['is_people_news'] == 1) {
+                    $people_news['title'] = $post['title'];
+                    $people_news['content'] = Arr::get($_POST, 'content');
+                    $people_news['author_name'] = Arr::get($_POST, 'author_name');
+                    Model_People::postnews($people_news);
                 }
 
 
@@ -504,7 +502,7 @@ class Controller_News extends Layout_Main {
                     'total_items' => $news->count(),
                     'items_per_page' => 10,
                     'view' => 'pager/common',
-                ));
+        ));
 
         $view['pager'] = $pager;
         $view['tag'] = $q;
