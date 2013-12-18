@@ -18,7 +18,7 @@ class Controller_Publication extends Layout_Main {
             $publication->addWhere('type=?', $type);
         }
 
-        $publication->orderBy('order_num ASC,id DESC');
+        $publication->orderBy('order_num DESC,id DESC');
 
         $total_pub = $publication->count();
 
