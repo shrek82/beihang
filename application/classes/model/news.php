@@ -67,7 +67,7 @@ class Model_News {
 
         //总会
         if ($aa_id == 'main') {
-            $news->andWhere('c.aa_id = 0 AND  c.category_id<>5');
+            $news->andWhere('c.aa_id = 0 AND  c.id<>5');
         }
         //所有地方新闻
         elseif ($aa_id=== 'aa') {
