@@ -1,4 +1,5 @@
 <?php
+
 /**
   +-----------------------------------------------------------------
  * 名称：俱乐部模型
@@ -9,26 +10,27 @@
   +-----------------------------------------------------------------
  */
 class Model_Club {
+
     const LOGO_DIR = 'static/upload/club/';
 
     # 判断是否为本俱乐部成员id
 
     public static function isMember($club_id, $user_id) {
         return (bool) Doctrine_Query::create()
-                ->from('ClubMember')
-                ->where('club_id = ?', $club_id)
-                ->andWhere('user_id = ?', $user_id)
-                ->count();
+                        ->from('ClubMember')
+                        ->where('club_id = ?', $club_id)
+                        ->andWhere('user_id = ?', $user_id)
+                        ->count();
     }
 
     //判断是否为管理员
     public static function isManager($club_id, $user_id) {
-           return (bool) Doctrine_Query::create()
-                    ->from('ClubMember')
-                    ->where('club_id = ?', $club_id)
-                    ->andWhere('user_id = ?', $user_id)
-                    ->andWhere('manager = ?', true)
-                    ->count();
+        return (bool) Doctrine_Query::create()
+                        ->from('ClubMember')
+                        ->where('club_id = ?', $club_id)
+                        ->andWhere('user_id = ?', $user_id)
+                        ->andWhere('manager = ?', true)
+                        ->count();
     }
 
 //返回logo地址
@@ -45,25 +47,25 @@ class Model_Club {
 
     public static function isExist($aa_id, $name) {
         return (bool) Doctrine_Query::create()
-                ->from('Club c')
-                ->where('c.aa_id = ?', $aa_id)
-                ->andWhere('c.name = ?', $name)
-                ->count();
+                        ->from('Club c')
+                        ->where('c.aa_id = ?', $aa_id)
+                        ->andWhere('c.name = ?', $name)
+                        ->count();
     }
 
     static function set_chairman($club_id, $user_id, $title) {
         $member = Doctrine_Query::create()
-                        ->from('ClubMember')
-                        ->where('club_id = ?', $club_id)
-                        ->andWhere('user_id = ?', $user_id)
-                        ->fetchOne();
+                ->from('ClubMember')
+                ->where('club_id = ?', $club_id)
+                ->andWhere('user_id = ?', $user_id)
+                ->fetchOne();
 
         if ($member == false || $member['chairman'] == false) {
             // 免除原负责人
             $chairman = Doctrine_Query::create()
-                            ->from('ClubMember')
-                            ->where('club_id = ? AND chairman = ?', array($club_id, true))
-                            ->fetchOne();
+                    ->from('ClubMember')
+                    ->where('club_id = ? AND chairman = ?', array($club_id, true))
+                    ->fetchOne();
 
             if ($chairman != false) {
                 $chairman['chairman'] = false;
@@ -98,7 +100,45 @@ class Model_Club {
     }
 
     //删除俱乐部
-    public static function del($cid){
+    public static function del($cid) {
+        if ((int)$cid > 0) {
+            Doctrine_Query::create()
+                    ->delete('Event')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('Bbs')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('BbsUnit')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('NewsCategory')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('Album')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('ClubMember')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('JoinApply')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('Banner')
+                    ->where('club_id =?', $cid)
+                    ->execute();
+            Doctrine_Query::create()
+                    ->delete('Club')
+                    ->where('id =?', $cid)
+                    ->execute();
+        }
     }
 
 }

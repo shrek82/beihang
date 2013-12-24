@@ -119,6 +119,7 @@
                                     'admin_aa' => '地方校友会',
                                     'admin_classroom' => '班级录',
                                     'admin_bbs' => '交流园地',
+                                    'admin_something' => '新鲜事',
                                     'admin_album' => '所有相册',
                                     'admin_people' => '北航校友',
                                     'admin_publication' => '校友刊物',
@@ -129,7 +130,7 @@
                                 ?>
                                 <LI><a href="<?= URL::site('admin/count') ?>" target="frmright"  onFocus="this.blur();"  id="nav_home" class="ahover"><span class="ahoverspan">管理首页</span></a></LI>
                                 <?php foreach ($admin_links as $link => $name): ?>
-                                    <LI><a href="<?= URL::site($link) ?>" target="frmright"  onFocus="this.blur();"  id="nav_<?= $link ?>"><span><?= $name ?></span></a></LI>
+                                    <LI><a href="<?= URL::site($link) ?>?zjgdebug=1" target="frmright"  onFocus="this.blur();"  id="nav_<?= $link ?>"><span><?= $name ?></span></a></LI>
                                             <?php endforeach; ?>
 
                             </UL>

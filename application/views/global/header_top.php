@@ -64,6 +64,8 @@ if ($_URI == 'user/login') {
         <li <?= $_C == 'people'? 'class="current" ' : '' ?>><a href="<?= URL::site('people') ?>" >北航校友</a></li>
         <li <?= $_C == 'donate'? 'class="current" ' : '' ?>><a href="<?= URL::site('donate') ?>" >校友捐赠</a></li>
         <li <?= $_C == 'publication'? 'class="current" ' : '' ?>><a href="<?= URL::site('publication') ?>" >校友刊物</a></li>
+        <li <?= $_C == 'service'? 'class="current" ' : '' ?>><a href="<?= URL::site('service') ?>" >校友服务</a></li>
+
                             </ul>
                             <span class="total"></span>
                         </div>

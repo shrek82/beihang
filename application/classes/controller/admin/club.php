@@ -44,7 +44,7 @@ class Controller_Admin_Club extends Layout_Admin {
     //删除俱乐部
     function action_del(){
         $cid=  Arr::get($_GET,'cid');
-        $action=Model_Club::del($cid);
+        Model_Club::del($cid);
     }
 
 }

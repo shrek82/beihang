@@ -71,7 +71,7 @@
             ok: function() {
                 new Request({
                     url: '<?= URL::site('admin_club/del?cid=') ?>' + cid,
-                    type: 'post',
+                    type: 'get',
                     success: function() {
                         candyDel('club_' + cid);
                     }

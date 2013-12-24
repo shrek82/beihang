@@ -34,8 +34,8 @@
 </td>
 </tr>
     <tr>
-        <td width="55%">&nbsp;&nbsp;&nbsp;&nbsp;标题</td>
-	 <td width="10%" class="center">分类</td>
+        <td width="45%">&nbsp;&nbsp;&nbsp;&nbsp;标题</td>
+	 <td width="20%" class="center">分类</td>
 	 <td width="5%" class="center">属性</td>
 	<td width="15%" class="center">修改日期</td>
         <td width="6%" class="center">修改</td>
