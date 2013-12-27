@@ -76,6 +76,16 @@ class Controller_Admin extends Layout_Admin {
                 ->from('User')
                 ->where("to_days(reg_at) = to_days(now())")
                 ->count();
+        
+        //使用帮助
+        $view['admin_help']= DB::select(DB::expr('id,img_path,redirect,title,create_at,update_at'))
+                ->from('content')
+                ->where('type', '=', 13)
+                ->order_by('is_recommended', 'DESC')
+                ->order_by('id', 'DESC')
+                ->limit(10)
+                ->execute()
+                ->as_array();
 
         $this->_render('_body', $view);
     }
@@ -135,5 +145,7 @@ class Controller_Admin extends Layout_Admin {
                 ->fetchArray();
         echo View::factory('admin/leftbar', $view);
     }
+    
+    
 
 }

@@ -67,6 +67,8 @@
                                 <li><a href="<?= URL::site('admin_config') ?>" target="frmright" id="left0_1" >网站设置</a></li>
                                 <li><a href="<?= URL::site('admin/filter') ?>" target="frmright" id="left0_7" >词语过滤</a></li>
                                 <li><a href="<?= URL::site('admin_log') ?>" target="frmright" id="left0_9" >管理日志</a></li>
+                                <li><a href="<?= URL::site('admin_content?type=13') ?>" target="frmright" id="left0_10" >使用帮助</a></li>
+
                             </ul>
                         </div>
 

@@ -18,7 +18,42 @@
         <td>上月注册：<a href="<?= URL::site('admin_user/index') ?>" title="点击浏览" style="color:#c00"><?= $user_count['shangyue'] ?>人</a></td>
         <td>所有用户：<a href="<?= URL::site('admin_user/index') ?>" title="点击浏览" ><?= $user_count['all'] ?>人</a></td>
     </tr>
-    <tr>
-        <td colspan="4" class="td_title" ></td>
-    </tr>
+
 </table>
+
+
+<!-- 使用帮助 -->
+<?php if (!$admin_help): ?>
+<?php else: ?>
+
+    <table class="admin_table" width="100%" border="0" cellpadding="0" cellspacing="1" style="margin-top:0px ">
+        <tr>
+            <td colspan="2" class="td_title">使用帮助</td>
+        </tr>
+    </table>
+
+    <table class="admin_table" width="100%" border="0" cellpadding="0" cellspacing="1" style="margin-top:0px ">
+        <tr>
+            <td width="5%" style="text-align:center">序号</td>
+            <td style="text-align:left;">标题</td>
+            <td width="15%" style="text-align:center">发布日期</td>
+        </tr>
+
+        <?php foreach ($admin_help as $key => $i) : ?>
+            <tr  id="info_<?= $i['id'] ?>" class="<?php
+            if (($key) % 2 == 0) {
+                echo'even_tr';
+            }
+            ?>">
+                <td style="text-align:center"><?= $i['id'] ?></td>
+                <td style="text-align:left"><a href="/admin_content/view?id=<?= $i['id'] ?>" ><?= $i['title'] ?></a></td>
+                <td style="text-align:center"><?= $i['create_at'] ?></td>
+            </tr>
+    <?php endforeach; ?>
+            
+    <tr>
+        <td colspan="3" class="td_title" ></td>
+    </tr>
+    </table>
+
+<?php endif; ?>
