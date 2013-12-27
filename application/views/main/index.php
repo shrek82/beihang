@@ -149,15 +149,15 @@
         </div>
         <div class="clear"></div>
 
-        <p class="sidebar_title" style="border-width:1px 0">主题活动</p>
+        <p class="sidebar_title" style="border-width:1px 0">校友企业</p>
 
         <div style="padding:10px">
-            <?php if (!$static): ?>
-                <p class="nodata" >暂无活动</p>
+            <?php if (!$enterprise): ?>
+                <p class="nodata" >暂无内容</p>
             <?php endif; ?>
-            <?php foreach ($static as $e): ?>
+            <?php foreach ($enterprise as $e): ?>
                 <?php if (empty($e['redirect'])): ?>
-                    <a href="<?= URL::site('event/static?id=' . $e['id']) ?>" target="_blank"><?php else: ?><a href="<?= $e['redirect'] ?>" target="_blank"><?php endif; ?><img src="<?= $e['img_path'] ?>" width="220" height="70" style="margin-bottom:10px"/></a>
+                    <a href="/people/eView?id=<?= $e['id'] ?>" target="_blank"><?php else: ?><a href="<?= $e['redirect'] ?>" target="_blank"><?php endif; ?><img src="<?= $e['img_path'] ?>" width="220" height="70" style="margin-bottom:10px"/></a>
                 <?php endforeach; ?>
 
                 <p class="more" style="margin:5px 0"><a href="<?= URL::site('event') ?>">>>更多</a></p>

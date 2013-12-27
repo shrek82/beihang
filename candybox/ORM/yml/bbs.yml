@@ -1,0 +1,117 @@
+options:
+  type: MYISAM
+
+Bbs:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    aa_id:
+      type: integer(5)
+      default: 0
+    parent_id:
+      type: integer(5)
+      default: 0
+    club_id:
+      type: integer(5)
+      default: 0
+    name: string(40)
+    order_num: integer(6)
+    intro: string(200)
+  relations:
+    Aa:
+      foreignAlias: Bbses
+    Club:
+      foreignAlias: Bbses
+
+BbsUnit:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    aa_id: integer(4)
+    club_id: integer(4)
+    bbs_id: integer(4)
+    type: string(10) #默认post
+    subject: integer(2)
+    title: string(80)
+    title_color: string(12)
+    user_id: integer
+    is_fixed:
+      type: boolean
+      default: false
+    is_club_fixed:
+      type: boolean
+      default: false
+    is_good:
+      type: boolean
+      default: false
+    is_closed:
+      type: boolean
+      default: false
+    is_pic:
+      type: boolean
+      default: false
+    is_vote:
+      type: boolean
+      default: false
+    is_limit:
+      type: boolean
+      default: false
+    is_focus:
+      type: boolean
+      default: false
+    img_path: string(255)
+    hit:
+      type: integer(5)
+      default: 0
+    reply_num:
+      type: integer(4)
+      default: 0
+    create_at: timestamp
+    update_at: timestamp
+    comment_at: timestamp
+    new_replyid: integer
+    new_cmtid: integer
+    event_id: integer(5)
+  relations:
+    Bbs:
+      foreignAlias: Units
+    User:
+      foreignAlias: Units
+    Vote:
+      local: id
+      foreign: bbs_unit_id
+      foreignAlias: Units
+    Ruser:
+      class: User
+      local: new_replyid
+      foreign: id
+      foreignAlias: Units
+    Event:
+      foreignType: one
+      local: event_id
+      foreign: id
+      foreignAlias: Units
+    Aa:
+      foreignType: one
+      local: aa_id
+      foreign: id
+      foreignAlias: Units
+
+
+BbsPost:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    bbs_unit_id: integer(5)
+    content: clob
+    hidden: string
+  relations:
+    BbsUnit:
+      foreignType: one
+      foreignAlias: Post

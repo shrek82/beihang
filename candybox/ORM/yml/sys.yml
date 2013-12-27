@@ -1,0 +1,72 @@
+options:
+  type: MYISAM
+
+SysMessage:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    user_id: integer(4)
+    title: string(80)
+    content: string
+    post_at: timestamp
+    start_at: date
+    expire_at: date
+    object: string
+    reader: clob
+
+# 首页信息过滤
+SysFilter:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    news_id: integer(4)
+    event_id: integer(4)
+    pic_id: integer(4)
+    bbs_unit_id: integer(4)
+    order_num: integer(4)
+  relations:
+    News:
+      foreignType: one
+    Event:
+      foreignType: one
+    Pic:
+      foreignType: one
+    BbsUnit:
+      local: bbs_unit_id
+      foreign: id
+      foreignAlias: SysFilter
+      foreignType: one
+
+Filter:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    string: string(100)
+
+Ol:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    uid: integer(4)
+    time: integer(11)
+    
+Config:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name: string(100)
+    key: string(100)
+    is_boolean: integer(1)
+    value: string(250)
+    img_path: string(250)
+

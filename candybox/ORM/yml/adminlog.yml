@@ -1,0 +1,26 @@
+options:
+  type: MYISAM
+  
+#校友会邮箱
+AdminLog:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    type: string(20)
+    user_id: integer(20)
+    news_id: integer(20)
+    classroom_id: integer(11)
+    aa_id: integer(11)
+    event_id: integer(11)
+    comment_id: integer(20)
+    bbs_unit_id: integer(20)
+    description: string(225)
+    manage_at: timestamp
+    manager_id: integer(20)
+  relations:
+    User:
+      local: manager_id
+      foreign: id
+      foreignAlias: VoteUsers

@@ -1,0 +1,59 @@
+options:
+  type: MYISAM
+
+Album:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    aa_id: integer(3)
+    club_id: integer(4)
+    event_id: integer(4)
+    user_id: integer(4)
+    classroom_id: integer(6)
+    pic_num: integer(6)
+    name: string(60)
+    cover_pid: integer
+    special_id: integer
+    order_num: integer(6)
+    is_allow_upload:
+      type: boolean
+      default: false
+    create_at: timestamp
+    update_at: timestamp
+  relations:
+    Event:
+      foreignType: one
+    Aa:
+      foreignAlias: Albums
+    Club:
+      foreignAlias: Albums
+    Special:
+      class: NewsSpecial
+      local: special_id
+      foreign: id
+      foreignAlias: Albums
+
+# 图片
+Pic:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    user_id: integer(4)
+    album_id: integer(3)
+    name: string(40)
+    img_path: string(200)
+    intro: string(200)
+    upload_at: timestamp
+    is_release: integer(1)
+    comments_num:
+      type: integer(4)
+      default: 0
+  relations:
+    Album:
+      foreignAlias: Pics
+    User:
+      foreignAlias: Pics

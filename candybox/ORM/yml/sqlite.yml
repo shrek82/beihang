@@ -1,0 +1,31 @@
+# 专题活动
+EventPic:
+  connection: native
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    pic: blob
+    title: string(80)
+    content: string
+    order_num:
+      type: integer(2)
+      default: 0
+    create_at: timestamp
+    is_public:
+      type: boolean
+      default: true
+
+# 图片新闻
+NewsPic:
+  connection: native
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    news_id: integer(4)
+    pic: blob
+    title: string(80)
+    url: string(80)

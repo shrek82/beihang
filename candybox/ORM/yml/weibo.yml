@@ -1,0 +1,83 @@
+options:
+  type: MYISAM
+
+#微博内容表
+WeiboContent:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    content: string
+    user_id: integer
+    img_path: string(200)
+    img_paths: string
+    post_at: timestamp
+    reply_num: integer(4)
+    clients: string(20)
+    from_forward: integer
+    aa_id: integer
+    forward_num: integer(6)
+    topic: string(100)
+    about_org:
+      type: boolean
+      default: false
+    is_original:
+      type: boolean
+      default: false
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: WeiboContents
+
+#微博对于校友会表
+AaWeibo:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    aa_id: integer(6)
+    topic: string(100)
+    content_id: integer
+    user_id: integer
+    is_original:
+      type: boolean
+      default: false
+    about_org:
+      type: boolean
+      default: false
+  relations:
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: AaWeibos
+    WeiboContent:
+      local: content_id
+      foreign: id
+      foreignAlias: AaWeibos
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: AaWeibos
+
+WeiboTopics:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    topic: string(200)
+    num: integer(6)
+    aa_id: integer(6)
+    user_id: integer
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: WeiboTopics
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: AaWeibos

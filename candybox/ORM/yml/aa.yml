@@ -1,0 +1,114 @@
+options:
+  type: MYISAM
+
+# 总会信息
+MainInfo:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+      autoincrement: true
+    title: string(60)
+    content: string
+    order_num:
+      type: integer(2)
+      default: 0
+    update_at: timestamp
+    type: string(50)
+    is_public:
+      type: boolean
+      default: true
+
+# 关于总会
+MainAa:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+      autoincrement: true
+    name: string(40)
+    intro: string
+    zip: string(10)
+    address: string(200)
+    tel: string(200)
+    fax: string(50)
+    mail: string(50)
+
+Aa:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+    name: string(30)
+    ename: string(50)
+    group: integer(2)
+    sname: string(15) # 缩写
+    range: string(50)
+    class: string(10)
+    zip: string(10)
+    address: string(200)
+    tel: string(200)
+    fax: string(50)
+    contacts: string(50)
+    website: string(50)
+    email: string(50)
+    found_at: date
+    intro: string
+    order_num: integer(4)
+    weibo: string(200)
+    institute_speciality_key: string(255)
+    notice: string(255)
+    is_need_verify:
+      type: boolean
+      default: false
+
+AaInfo:
+  columns:
+    aa_id: integer(9)
+    club_id: integer(9)
+    title: string(60)
+    content: string
+    order_num:
+      type: integer(2)
+      default: 0
+    update_at: timestamp
+    is_public:
+      type: boolean
+      default: true
+  relations:
+    Aa:
+      foreignAlias: Infos
+
+AaMember:
+  columns:
+    aa_id: integer(9)
+    user_id: integer(20)
+    point:
+      type: integer(4)
+      default: 0
+      unsigned: true
+    title: string(20)
+    chairman:
+      type: boolean
+      default: false
+    permissions: string(255)
+    manager: integer(1)
+    join_at:
+      type: timestamp
+      notnull: true
+    visit_at: timestamp
+    remarks: string(255)
+  relations:
+    Aa:
+      foreignAlias: Members
+    User:
+      foreignAlias: AaMembers
+
+AaVisit:
+  columns:
+    aa_id: integer(4)
+    visit_date: date
+    hit_num: integer(6)
+  relations:
+    Aa:
+      foreignAlias: AaVisits

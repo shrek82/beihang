@@ -96,7 +96,6 @@
                         <div id="nav_admin_event" style="display: none">
                             <ul>
                                 <li><a  href="<?= URL::site('admin_event/index') ?>"  target="frmright" >活动列表</a></li>
-                                <li><a  href="<?= URL::site('admin_event/static') ?>"  target="frmright" >专题活动</a></li>
                             </ul>
                         </div>
 
@@ -148,6 +147,8 @@
                                 <li><a  href="<?= URL::site('admin_publication/index') ?>"  target="frmright" >期刊管理</a></li>
                                 <li><a  href="<?= URL::site('admin_publication/pubForm') ?>"  target="frmright" >新增期刊</a></li>
                                 <li><a  href="<?= URL::site('admin_publication/article') ?>"  target="frmright" >文章管理</a></li>
+                                <li><a  href="/admin_publication/contribute"  target="frmright" >投稿管理</a></li>
+
                             </ul>
                         </div>
 
@@ -185,8 +186,12 @@
                                 <li><a  href="<?= URL::site('admin_people/index') ?>"  target="frmright" >院士风采</a></li>
                                 <li><a  href="<?= URL::site('admin_people/president') ?>"  target="frmright" >历任校长</a></li>
                                 <li><a  href="<?= URL::site('admin_people/presidentForm') ?>"  target="frmright" >新增校长</a></li>
+                                <li><a  href="/admin_content/index?type=12"  target="frmright" >校友企业</a></li>
                                 <li><a  href="/admin_news/index?cid=5"  target="frmright" >北航校友</a></li>
                                 <li><a  href="/admin_news/form?cid=5"  target="frmright" >添加新闻</a></li>
+                                <li><a  href="<?= URL::site('admin_event/static') ?>"  target="frmright" >推荐企业</a></li>
+
+
                             </ul>
                         </div>
 

@@ -1,0 +1,82 @@
+options:
+  type: MYISAM
+  
+#内容表
+DonateStatistics:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name: string(255)
+    file_path: string(255)
+    intro: string
+    donor: string(200)
+    donor_intro: string
+    user_id: integer(5)
+    donate_at: string
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: DonateStatistics
+
+#年度捐赠
+DonateAnnual:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    project: string(200)
+    will: string(255)
+    amount: string(150)
+    donor: string(200)
+    user_id: integer(20)
+    sex: string(10)
+    birthday: string(50)
+    birthplace: string(50)
+    speciality: string(100)
+    company: string(150)
+    address: string(200)
+    zipcode: string(10)
+    tel: string(50)
+    mobile: string(50)
+    email: string(50)
+    provinces: string(100)
+    methods: string(100)
+    payment_status: integer(1)
+    donate_at: timestamp
+    mingyi: integer(1)
+    message: string(255)
+    graduation_year: integer(6)
+    billno: string(100)
+    ipsbillno: string(150)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: DonateAnnuals
+
+#校友活动共基金
+DonateFund:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    project: string(150)
+    donate_type: integer(6)
+    amount: string(150)
+    donor: string(150)
+    user_id: integer(6)
+    speciality: string(100)
+    address: string(200)
+    graduation_date: timestamp
+    enrollment_date: timestamp
+    donate_at: timestamp
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: DonateFunds

@@ -1,0 +1,124 @@
+options:
+  type: MYISAM
+
+ClassRoom: 
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    start_year: integer(4) # 入班年份
+    finish_year: integer(4)
+    name: string(50)
+    member_num: integer(4)
+    intro: string
+    notice: string
+    create_at: date
+    school: string
+    education: string
+    institute: string(50)
+    institute_no: string(50)
+    update_at: timestamp # 更新
+    speciality: string(50)
+    verify: integer(1)
+
+ClassMember: # 班级成员 --------------------------------
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    user_id: integer(5)
+    class_room_id: integer
+    title: string(30)
+    is_manager:
+      type: boolean
+      default: false
+    join_at: timestamp
+    visit_at: timestamp
+    is_verify: integer(1)
+    descript: string
+  relations:
+    User:
+      foreignType: one
+    ClassRoom:
+      foreignAlias: Members
+
+ClassAbook:
+  columns:
+    user_id: integer(5)
+    tel: string(30)
+    mobile: string(30)
+    qq: string(30)
+    msn: string(60)
+    address: string(100)
+  relations:
+    User:
+      foreignType: one
+
+ClassBbs:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    classroom_id:
+      type: integer(3)
+      default: 0
+    name: string(40)
+    order_num: integer(6)
+    intro: string(200)
+  relations:
+    ClassRoom:
+      local: classroom_id
+      foreign: id
+      foreignAlias: ClassBbses
+
+ClassBbsUnit:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    bbs_id: integer(4)
+    type: string(10) #默认post
+    title: string(80)
+    user_id: integer(5)
+    content: clob
+    is_fixed:
+      type: boolean #固定
+      default: false
+    is_good:
+      type: boolean #精华
+      default: false
+    is_closed:
+      type: boolean #关闭
+      default: false
+    is_pic:
+      type: boolean #包含图片
+      default: false
+    is_limit:
+      type: boolean
+      default: false
+    is_focus:
+      type: boolean
+      default: false
+    img_path: string(255)
+    hit:
+      type: integer(5)
+      default: 0
+    reply_num:
+      type: integer(4)
+      default: 0
+    create_at: timestamp
+    update_at: timestamp
+    comment_at: timestamp
+  relations:
+    ClassBbs:
+      local: bbs_id
+      foreign: id
+      foreignAlias: ClassBbsUnits
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: ClassBbsUnits

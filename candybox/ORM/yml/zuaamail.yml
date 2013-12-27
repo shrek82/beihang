@@ -1,0 +1,29 @@
+options:
+  type: MYISAM
+  
+#校友会邮箱
+ZuaaMail:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    user_id: integer(11)
+    create_at: timestamp
+    username: string(100)
+    password: string(100)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: VoteUsers
+
+UnsubscribeEmail:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    email: string(100)
+    user_id: integer(11)
+    create_at: timestamp

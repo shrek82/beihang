@@ -1,4 +1,5 @@
 <?php
+
 /**
   +-----------------------------------------------------------------
  * 名称：内容模型
@@ -32,11 +33,10 @@ class Db_Content {
         }
     }
 
-        //首页静态图片
+    //首页静态图片
     public static function getStaticPics() {
 
         $taday = date('Y-m-d');
-
         $static_pic = DB::select(DB::expr('id,img_path,redirect,title'))
                 ->from('content')
                 ->where('type', '=', 17)
@@ -53,6 +53,22 @@ class Db_Content {
         } else {
             return array();
         }
+    }
+
+    //推荐校友企业
+    public static function getEnterprise($category_id = 12, $limit = 3) {
+
+        $enterprise = DB::select(DB::expr('id,img_path,redirect,title'))
+                ->from('content')
+                ->where('type', '=', $category_id)
+                ->where('is_close', '=', 0)
+                ->order_by('order_num', 'ASC')
+                ->order_by('id', 'ASC')
+                ->limit($limit)
+                ->execute()
+                ->as_array();
+
+           return $enterprise;
     }
 
 }

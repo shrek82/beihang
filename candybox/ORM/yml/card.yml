@@ -1,0 +1,15 @@
+options:
+  type: MYISAM
+
+# 申请加入各类组织表
+CardApply:
+  columns:
+    id: integer(3)
+    realname: string(20)
+    mobile: string(20)
+    user_id: integer(6)
+    apply_at: timestamp
+    card_type: string(50)
+  relations:
+    User:
+      foreignAlias: Applys

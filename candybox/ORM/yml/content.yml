@@ -1,0 +1,52 @@
+options:
+  type: MYISAM
+  
+#内容表
+Content:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    user_id: integer(5)
+    type: integer(5)
+    title: string(60)
+    content: string
+    update_at: timestamp
+    create_at: timestamp
+    is_release: boolean
+    is_system: boolean
+    is_recommended: boolean
+    is_close: 
+      type: boolean
+      default: false
+    start_date: timestamp
+    end_date: timestamp
+    order_num: integer(4)
+    redirect: string(255)
+    img_path: string(150)
+    hit:
+      type: integer(4)
+      default: 0
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: Contents
+    ContentCategory:
+      local: type
+      foreign: id
+      foreignAlias: Contents
+      
+#内容分类表
+ContentCategory:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name: string(40)
+    is_system: boolean
+    order_num:
+      type: integer(4)
+      default: 0

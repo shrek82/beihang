@@ -1,0 +1,14 @@
+options:
+  type: MYISAM
+
+Links:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name: string(50)
+    type: tinyint(1)
+    url: string(10)
+    order_num: smallint(6)
+    is_logo: tinyint(1)

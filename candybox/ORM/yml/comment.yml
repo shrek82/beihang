@@ -1,0 +1,46 @@
+options:
+  type: MYISAM
+
+Comment:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    user_id: integer(5)
+    news_id: integer(4)
+    event_id: integer(4)
+    class_room_id: integer(5)
+    bbs_unit_id: integer(5)
+    class_unit_id: integer(5)
+    pic_id: integer(5)
+    bubble_id: integer(5)
+    weibo_id: integer(5)
+    vote_id: integer(5)
+    album_id: integer(5)
+    content: string
+    post_at: timestamp
+    update_at: timestamp
+    clients: string(20)
+    quote_ids: string(255)
+    is_closed:
+      type: boolean
+      default: false
+    score:
+      type: integer(6)
+      default: 0
+  relations:
+    ClassRoom:
+      foreignAlias: Comments
+    News:
+      foreignAlias: Comments
+    Event:
+      foreignAlias: Comments
+    BbsUnit:
+      foreignAlias: Comments
+    User:
+      foreignType: one
+    WeiboContent:
+      local: weibo_id
+      foreign: id
+      foreignAlias: Comments

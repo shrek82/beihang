@@ -1,0 +1,124 @@
+options:
+  type: MYISAM
+
+News:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    category_id: integer(5)
+    user_id: integer(5)
+    author_id: integer(5)
+    special_id: integer(5)
+    author_name: string(16)
+    short_title: string(250)
+    title: string(250)
+    img_path: string(100)
+    images: string
+    small_img_path: string(150)
+    recommended_path: string(100)
+    vice_title: string(250)
+    title_color: string(7)
+    source: string(100)
+    font_size: integer(2)
+    intro: string
+    content: string
+    redirect: string(200)
+    update_at: timestamp
+    create_at: timestamp
+    is_draft: boolean
+    is_release: boolean
+    is_pic: boolean
+    is_fixed: boolean
+    is_top: boolean
+    is_recommended: boolean
+    aa_is_top: boolean
+    is_focus: boolean
+    is_comment: boolean
+    comments_num:
+      type: integer(4)
+      default: 0
+    hit:
+      type: integer(4)
+      default: 0
+    dig:
+      type: integer(4)
+      default: 0
+  relations:
+    NewsCategory:
+      class: NewsCategory
+      local: category_id
+      foreign: id
+      foreignAlias: NewsCategorys
+    Special:
+      class: NewsSpecial
+      local: special_id
+      foreign: id
+      foreignAlias: Newses
+    User:
+      foreignType: one
+
+NewsTags:
+  columns:
+    news_id: integer(4)
+    name: string(16)
+  relations:
+    News:
+      foreignAlias: Tags
+
+NewsCategory:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+      autoincrement: true
+    name: string(20)
+    aa_id: integer(3)
+    club_id: integer(3)
+    intro: string
+    order_num:
+      type: integer(2)
+      default: 0
+    is_public:
+      type: boolean
+      default: true
+  relations:
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: NewsCategorys
+    Club:
+      local: club_id
+      foreign: id
+      foreignAlias: NewsCategorys
+
+NewsCategorys:
+  columns:
+    news_id: integer(4)
+    news_category_id: integer(3)
+    is_fixed: # 某新闻在某类里是否为固定
+      type: boolean
+      default: false
+  relations:
+    NewsCategory:
+      local: news_category_id
+      foreign: id
+      foreignAlias: NewsCategoryses
+
+NewsSpecial:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name: string(16)
+    intro: string
+    weibo_topic: string(100)
+    weibo_pagesize: integer(6)
+    is_displayweibo_on_home:
+      type: boolean
+      default: false
+    is_displaycomment_on_home:
+      type: boolean
+      default: false

@@ -1,0 +1,77 @@
+options:
+  type: MYISAM
+  
+#投票表
+Vote:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    aa_id:
+      type: integer(6)
+      default: 0
+    user_id: integer(11)
+    news_id: integer(11)
+    bbs_unit_id: integer(11)
+    classroom_id: integer(11)
+    event_id: integer(11)
+    type: string(20)
+    max_select: integer(4)
+    title: string(200)
+    content: string
+    create_at: timestamp
+    start_date: timestamp
+    finish_date: timestamp
+    is_closed:
+      type: boolean
+      default: false
+    hit:
+      type: integer(6)
+      default: 0
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: Votes
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: Votes
+      
+#投票选项表
+VoteOptions:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    vote_id: integer(6)
+    title: string(200)
+    color: string(50)
+    votes: integer(6)
+    order_num:
+      type: integer(4)
+      default: 0
+  relations:
+    Vote:
+      local: vote_id
+      foreign: id
+      foreignAlias: VoteOptions
+
+#已参与投标会员
+VoteUser:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    vote_id: integer(6)
+    user_id: integer(11)
+    create_at: timestamp
+    selected_id: string(200)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: VoteUsers

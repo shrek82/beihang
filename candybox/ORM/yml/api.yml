@@ -1,0 +1,56 @@
+options:
+  type: MYISAM
+
+# 校友档案 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+Alumni:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    archive_id: string(20)
+    name: string(32) # 姓名
+    sex: string(2) # 性别
+    birthday: date # 生日
+    native_place: string(32) # 籍贯
+    nation: string(32) # 国籍
+    card_no: string(32) # 身份证号
+    full_time: string(64) #学制
+    education: string # 学历
+    school: string(128) # 学校
+    depart: string(64) # 系
+    speciality: string(64) # 专业
+    begin_date: date # 入学时间
+    graduation_date: date # 毕业时间
+    begin_year: integer(5) # 入学年份
+    graduation_year: integer(5) # 毕业年份
+    student_no: string(32) # 学号
+    file_no: string(32) # 学号
+    institute: string(50) # 学院
+    institute_no: string(50) # 学院编号
+
+AlumniTemp:
+  columns:
+    id:
+      type: integer(20)
+      primary: true
+      autoincrement: true
+    name: string(32) # 姓名
+    sex: string(2) # 性别
+    birthday: date # 生日
+    native_place: string(32) # 籍贯
+    nation: string(32) # 国籍
+    card_no: string(32) # 身份证号
+    full_time: string(64) #学制
+    education: string # 学历
+    school: string(128) # 学校
+    depart: string(64) # 系
+    speciality: string(64) # 专业
+    begin_date: date # 入学时间
+    graduation_date: date # 毕业时间
+    begin_year: integer(5) # 入学年份
+    graduation_year: integer(5) # 毕业年份
+    student_no: string(32) # 学号
+    file_no: string(32) # 学号
+    institute: string(50) # 学院
+    institute_no: string(50) # 学院编号

@@ -1,0 +1,14 @@
+options:
+  type: MYISAM
+  
+#地产街会员表
+HouseMember:
+  connection: dcj
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    username: integer(30)
+    password: integer(30)
+    email: integer(30)

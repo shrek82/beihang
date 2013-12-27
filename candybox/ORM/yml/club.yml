@@ -1,0 +1,47 @@
+options:
+  type: MYISAM
+
+Club:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    aa_id: integer(3)
+    name: string(40)
+    type: string(20) # 用于类似群组的归纳，如体育
+    intro: string
+    member_num: integer(3)
+    create_at: timestamp
+    logo_path: string(150)
+    order_num: timestamp
+    is_need_verify:
+      type: boolean
+      default: false
+  relations:
+    Aa:
+      foreignAlias: Clubs
+
+ClubMember:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    club_id: integer(4)
+    user_id: integer(4)
+    point:
+      type: integer(4)
+      default: 0
+      unsigned: true
+    title: string(20)
+    chairman: boolean
+    manager: boolean
+    join_at: timestamp
+    visit_at: timestamp
+  relations:
+    Club:
+      foreignAlias: Members
+    User:
+      foreignAlias: ClubMembers
+

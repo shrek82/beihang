@@ -1,0 +1,66 @@
+# 求是群芳
+options:
+  type: MYISAM
+
+People:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+      autoincrement: true
+    pic: string(200)
+    name: string(20)
+    abc: string(1)
+    birth: string(20)
+    leave: string(20)
+    intro: string
+
+President:
+  columns:
+    id:
+      type: integer(3)
+      primary: true
+      autoincrement: true
+    name: string(50)
+    period: integer(6)
+    term: string(100)
+    jobs: string(150)
+    img_path: string(150)
+    school: string(150)
+    intro: string
+    order_num: integer(6)
+
+PeopleNews:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    user_id: integer(5)
+    author_id: integer(5)
+    author_name: string(16)
+    title: string(250)
+    tag: string(50)
+    img_path: string(100)
+    vice_title: string(250)
+    title_color:
+      type: string(7)
+      notnull: true
+      default: '#333'
+    intro: string
+    content: string
+    update_at: timestamp
+    create_at: timestamp
+    is_draft: boolean
+    is_release: boolean
+    is_pic: boolean
+    is_top: boolean
+    aa_is_top: boolean
+    is_focus: boolean
+    is_comment: boolean
+    hit:
+      type: integer(4)
+      default: 0
+    dig:
+      type: integer(4)
+      default: 0

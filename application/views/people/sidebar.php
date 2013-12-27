@@ -4,7 +4,10 @@
 	<ul class="sidebar_menus">
 	    <li><a href="<?= URL::site('people/president') ?>" style="<?=$_A=='president'?'font-weight:bold':''?>">历任校长</a></li>
 	    <li><a href="<?= URL::site('people/academician') ?>" style="<?=$_A=='academician'||$_A=='aView'?'font-weight:bold':''?>">院士长廊</a></li>
-	    <li><a href="<?= URL::site('people/news') ?>" style="<?=$_A=='news'||$_A=='nView'?'font-weight:bold':''?>">校友风采</a></li>
+	    <li><a href="<?= URL::site('people/news') ?>" style="<?=$_A=='news'||$_A=='newsView'?'font-weight:bold':''?>">校友风采</a></li>
+            	    <li><a href="<?= URL::site('people/enterprise') ?>" style="<?=$_A=='enterprise'||$_A=='eView'?'font-weight:bold':''?>">校友企业</a></li>
+
+            
 	</ul>
     </div>
 </div>

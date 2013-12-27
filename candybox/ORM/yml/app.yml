@@ -1,0 +1,116 @@
+options:
+  type: MYISAM
+
+#微博内容表
+WeiboBinding:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    aa_id: integer
+    user_id: integer
+    service: string(20)
+    access_token: string(200)
+    weibo_services: string(200)
+    description: string(255)
+    binding_date: timestamp
+    uid: integer
+    screen_name: string(200)
+    name: string(200)
+    province: integer(11)
+    city: integer(11)
+    location: integer(11)
+    url: string(200)
+    profile_image_url: string(200)
+    domain: string(200)
+    gender: string(200)
+    followers_count: integer(11)
+    friends_count:  integer(11)
+    statuses_count: integer(11)
+    favourites_count: integer(11)
+    create_at: timestamp
+    update_at: timestamp
+    verified:
+      type: boolean
+      default: false
+    allow_all_comment:
+      type: boolean
+      default: true
+    avatar_large: string(150)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: WeiboBindings
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: WeiboBindings
+
+#微博内容表
+SinaWeibo:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    idstr: string(100)
+    wid: double
+    text: string
+    created_at: timestamp
+    colletion_at: timestamp
+    source: string(255)
+    in_reply_to_status_id: integer
+    in_reply_to_user_id: integer
+    in_reply_to_screen_name: string(150)
+    mid: string(100)
+    bmiddle_pic: string(2500)
+    original_pic: string(255)
+    thumbnail_pic: string(255)
+    reposts_count: integer(11)
+    is_delete: boolean
+    comments_count: integer(11)
+    uid: integer
+    user_id: integer
+    aa_id: integer
+    favorited:
+      type: boolean
+      default: false
+    truncated:
+      type: boolean
+      default: true
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: WeiboBindings
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: WeiboBindings
+
+#微博内容表
+SinaComments:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    weibo_id: string(100)
+    cmt_id: string(100)
+    cmt_idstr: string(100)
+    text: string
+    source: string(200)
+    cmt_uid: integer
+    cmt_mid: string(100)
+    created_at: timestamp
+    cmt_name: string(255)
+    cmt_screen_name: string(255)
+    profile_image_url: string(255)
+    avatar_large: string(255)
+    colletion_at: timestamp
+    is_verify:
+      type: boolean
+      default: false
+

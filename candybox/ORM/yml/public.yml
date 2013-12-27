@@ -1,0 +1,57 @@
+options:
+  type: MYISAM
+
+Banner:
+  columns:
+    filename: string
+    aa_id: integer(6)
+    club_id: integer(6)
+    classroom_id: integer
+    title: string(60)
+    format: string(10) # {banner,logo}
+    url: string(100)
+    order_num: integer(2)
+    is_display:
+       type: boolean
+       default: true
+  relations:
+    Aa:
+      foreignAlias: Shows
+
+Theme:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    aa_id: integer(6)
+    club_id: integer
+    classroom_id: integer
+    theme: string(255)
+    background_image: string(150)
+    background_color: string(50)
+    usercustom:
+      type: boolean
+      default: false
+    banner_limit: integer(6)
+    news_limit: integer(6)
+    weibo_limit: integer(6)
+    event_limit: integer(6)
+    bbsunit_limit: integer(6)
+    allow_post_weibo:
+       type: boolean
+       default: true
+    weibo_topic: string(100)
+  relations:
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: Themes
+    Club:
+      local: club_id
+      foreign: id
+      foreignAlias: Themes
+    ClassRoom:
+      local: classroom_id
+      foreign: id
+      foreignAlias: Themes

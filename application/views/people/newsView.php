@@ -8,6 +8,7 @@
 #cmt_content{width:600px; height:70px}
 </style>
 <div id="main_left" style="background-color:#F8FCFF; " >
+
     <h2 style="text-align:center" ><?= $news['title'] ?></h2>
     <div class="news_info" style="text-align:center; margin: 5px 10px; color: #999" >发布：<?= $news['create_at']; ?><?php if(trim($news['author_name'])):?>&nbsp;&nbsp;作者：<?=$news['author_name']?><?php endif;?></div>
     <div class=" dotted_line" style="margin:0px 15px"></div>

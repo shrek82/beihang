@@ -1,0 +1,142 @@
+options:
+  type: MYISAM
+
+Event:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    type: string(30) # 活动类型
+    aa_id: integer(3)
+    club_id: integer(4)
+    user_id: integer(4)
+    title: string(80)
+    sign_start: timestamp
+    sign_finish: timestamp
+    sign_limit: integer(2)
+    start: timestamp
+    finish: timestamp
+    publish_at: timestamp
+    small_img_path: string(150)
+    poster_path: string(250)
+    custom_icon: string(150)
+    score: integer(4)
+    votes: integer(4)
+    num:
+      type: integer(3)
+      default: +1
+    address: string(200)
+    content: clob
+    intro: string(255)
+    tags: string(100)
+    fields: string
+    category_label: string(100)
+    is_fixed:
+      type: boolean
+      default: false
+    is_club_fixed:
+      type: boolean
+      default: false
+    is_closed:
+      type: boolean
+      default: false
+    is_stop_sign:
+      type: boolean
+      default: false
+    is_suspend:
+      type: boolean
+      default: false
+    is_recommended:
+      type: boolean
+      default: false
+    total_tickets:
+      type: integer(4) #门票总数
+      default: 0
+    maximum_entourage: integer(4) #做多可携带人数
+    maximum_receive: integer(4)  #最多可领取门票张数
+    need_tickets: #需要门票
+      type: boolean
+      default: false
+    points_at_least: integer(4) #积分至少需要
+    receive_address: string(255) #领票位置
+    is_vcert: #官方认证活动
+      type: boolean
+      default: false
+    comments_num:
+      type: integer(4)
+      default: 0
+    interested_num:
+      type: integer(4)
+      default: 0
+  relations:
+    Aa:
+      foreignAlias: Events
+    Club:
+      foreignAlias: Events
+    User:
+      foreignAlias: Events
+
+# 专题活动
+EventStatic:
+  columns:
+    title: string(80)
+    redirect: string(200)
+    order_num: integer(2)
+    img_path: string(200)
+    content: clob
+    is_closed:
+      type: boolean
+      default: false
+
+# 活动标签
+EventTags:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    name: string(80)
+    img_path: string(200)
+    num: integer(6)
+
+# 活动报名表
+EventSignCategorys:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    event_id: integer(4)
+    order_num: integer(4)
+    name: string(200)
+  relations:
+    Event:
+      foreignAlias: EventSignCategoryss
+
+# 活动报名表
+EventSign:
+  columns:
+    event_id: integer(4)
+    user_id: integer(4)
+    sign_at: timestamp
+    tickets: integer(4)
+    receive_address: string(255)
+    remarks: string(255)
+    is_present: string(20)
+    is_anonymous:
+      type: boolean
+      default: false
+    category_id: integer(4)
+    clients: string(20)
+    vote:
+      type: integer(1)
+      default: 0
+    num:
+      type: integer(3)
+      default: 1
+  relations:
+    Event:
+      foreignAlias: Signs
+    User:
+      foreignAlias: Signs

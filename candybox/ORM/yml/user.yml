@@ -1,0 +1,254 @@
+options:
+  type: MYISAM
+
+User:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    alumni_id: string(64) # 学校数据库用户id
+    account: string(50)
+    homepage: string(200)
+    nick: string(50)
+    student_no: string(50)
+    file_no: string(64)
+    speciality: string(50)
+    start_year: integer(5)
+    finish_year: integer(5)
+    actived: boolean # 邮箱激活
+    password: string(32)
+    realname: string(20)
+    birthday: string(20)
+    city: string(18)
+    sex: string(2)
+    memo: string(200)
+    intro: string
+    authentic: boolean # 是否验证（默认都不通过）
+    login_time: timestamp
+    login_num: integer(4)
+    login_clients: string(50)
+    device_token: string(200)
+    reg_at: timestamp
+    role: string(16)
+    education: string(50)
+    school: string(50)
+    institute: string(50)
+    institute_no: integer(20)
+    bbs_unit_num: integer(6)
+    point: integer(6)
+    is_sended_active:
+      type: boolean
+      default: false
+  relations:
+    Ol:
+      local: id
+      foreign: uid
+      foreignAlias: Users
+
+
+UserContact:
+  columns:
+    user_id: integer
+    tel: string(20)
+    mobile: string(20)
+    address: string(80)
+    qq: string(15)
+    memo: string
+  relations:
+    User:
+      foreignType: one
+      foreignAlias: Contact
+
+UserEdu:
+  columns:
+    user_id: integer
+    school: string(20) # 学校
+    speciality: string(30) # 专业
+    grade: string(10) # 中学?本科?...
+    start_at: string(4) # 开始年份
+    finish_at: string(4) # 毕业年份
+  relations:
+    User:
+      foreignType: many
+      foreignAlias: Edus
+
+
+UserWork:
+  columns:
+    user_id: integer
+    industry: string(20) # 行业分类
+    company: string(40)
+    job: string(30)
+    start_at: date
+    leave_at: date
+  relations:
+    User:
+      foreignType: many
+      foreignAlias: Works
+
+UserPrivate:
+  columns:
+    user_id: integer
+    rules: string
+  relations:
+    User:
+      foreignType: one
+      foreignAlias: Private
+
+UserBubble:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    user_id: integer
+    content: string
+    blow_at: timestamp
+  relations:
+    User:
+      foreignAlias: Bubbles
+
+UserMark:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+    user_id: integer
+    user: integer(5)
+    news: integer(4)
+    event: integer(4)
+    bbs: integer(5)
+    mark_at: timestamp
+  relations:
+    MUser:
+      class: User
+      local: user
+      type: one
+    User:
+      foreignAlias: Marks
+    FUser:
+      class: User
+      local: user_id
+      foreign: id
+
+UserMsg:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    user_id: integer
+    send_to: integer(5)
+    content: string
+    send_at: timestamp
+    read_at: timestamp
+    sort_in: integer(5)
+    update_at: timestamp
+  relations:
+    Rec:
+      class: User
+      local: send_to
+    User:
+      foreignAlias: Msgs
+
+UserVisitor:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    user_id: integer
+    visitor_id: integer(5)
+    visit_at: timestamp
+  relations:
+    User:
+      local: visitor_id
+      foreignAlias: Visitors
+
+
+# 申请加入各类组织表
+JoinApply:
+  columns:
+    aa_id: integer(3)
+    club_id: integer(4)
+    class_room_id: integer(4)
+    user_id: integer
+    content: string
+    apply_at: timestamp
+    reject_reason: string
+    is_reject:
+      type: boolean
+      default: false
+  relations:
+    User:
+      foreignAlias: Applys
+    ClassRoom:
+      local: class_room_id
+      foreign: id
+      foreignAlias: Applys
+    Aa:
+      local: aa_id
+      foreign: id
+      foreignAlias: Applys
+    Club:
+      local: club_id
+      foreign: id
+      foreignAlias: Applys
+
+UserPoint:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    user_id: integer
+    point: integer(6)
+    count_point: integer(6)
+    rewards_point: integer(6)
+    aa_point: integer
+    update_at: timestamp
+    remark: string(200)
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: UserPoints
+
+UserInvite:
+  columns:
+    id:
+      type: integer
+      primary: true
+      autoincrement: true
+    title: string(200)
+    type: string(20)
+    user_id: integer
+    receiver_user_id: integer
+    receiver_email: string(50)
+    receiver_name: string(50)
+    message: string(255)
+    create_date: timestamp
+    read_date: timestamp
+    accept_date: timestamp
+    parent_invite_id: integer
+    is_read:
+      type: boolean
+      default: false
+    is_accept:
+      type: boolean
+      default: false
+    is_closed:
+      type: boolean
+      default: false
+  relations:
+    User:
+      local: user_id
+      foreign: id
+      foreignAlias: UserInvites
+    RUser:
+      class: User
+      local: receiver_user_id
+      foreign: id
+      foreignAlias: RUserInvites

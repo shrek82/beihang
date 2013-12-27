@@ -44,13 +44,16 @@ class Controller_Main extends Layout_Main {
         }
 
         //主题活动
-        $view['static'] = DB::select(DB::expr('id,title,redirect,img_path'))
-                ->from('event_static')
-                ->where('is_closed', '=', 0)
-                ->limit(3)
-                ->order_by('order_num', 'asc')
-                ->execute()
-                ->as_array();
+//        $view['static'] = DB::select(DB::expr('id,title,redirect,img_path'))
+//                ->from('event_static')
+//                ->where('is_closed', '=', 0)
+//                ->limit(3)
+//                ->order_by('order_num', 'asc')
+//                ->execute()
+//                ->as_array();
+//                
+        #校友企业
+        $view['enterprise']=  Db_Content::getEnterprise(12,3);
 
         $news_limit = 15;
         $view['news_special'] = array();
