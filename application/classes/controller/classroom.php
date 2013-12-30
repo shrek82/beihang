@@ -4,15 +4,13 @@ class Controller_Classroom extends Layout_Main {
 
     //班级首页
     function action_index() {
-        $start_year = 1900;
-        $end_year = date('Y');
         $view['classroom'] = Doctrine_Query::create()
                 ->select('start_year,count(*) AS class_count')
                 ->from('ClassRoom cr')
                 ->where('cr.start_year IS NOT NULL')
                 ->addWhere('verify=?', 1)
                 ->groupBy('start_year DESC')
-                ->useResultCache(true, 86400, 'class_count_year')
+                ->useResultCache(true, 3600, 'class_count_year')
                 ->fetchArray();
 
         $view['class_count'] = Doctrine_Query::create()
@@ -25,7 +23,7 @@ class Controller_Classroom extends Layout_Main {
         $view['class_join_count'] = Doctrine_Query::create()
                 ->from('ClassMember')
                 ->groupBy('user_id')
-                ->useResultCache(true, 7200, 'class_join_count')
+                ->useResultCache(true, 3600, 'class_join_count')
                 ->count();
 
         $view['hot_classroom'] = Doctrine_Query::create()
@@ -33,7 +31,7 @@ class Controller_Classroom extends Layout_Main {
                 ->from('ClassRoom cr')
                 ->orderBy('member_num DESC')
                 ->limit(9)
-                ->useResultCache(true, 7200, 'hot_classroom')
+                ->useResultCache(true, 3600, 'hot_classroom')
                 ->fetchArray();
 
         //最新加入
@@ -42,10 +40,10 @@ class Controller_Classroom extends Layout_Main {
                 ->from('ClassMember m')
                 ->leftJoin('m.User u')
                 ->leftJoin('m.ClassRoom cr')
-			    ->where('m.user_id>0')
+                ->where('m.user_id>0')
                 ->orderBy('m.id DESC')
                 ->limit(4)
-			    ->useResultCache(true, 7200, 'last_join_classroom')
+                ->useResultCache(true, 3600, 'last_join_classroom')
                 ->fetchArray();
 
         //我加入的班级
@@ -71,7 +69,7 @@ class Controller_Classroom extends Layout_Main {
 
         $hot_classroom = '';
 
-       //根据同学信息查找
+        //根据同学信息查找
         if ($searchtype == 'classmate' AND $keyword) {
             $user_ids = Doctrine_Query::create()
                     ->select('u.id')
@@ -123,7 +121,7 @@ class Controller_Classroom extends Layout_Main {
                     'total_items' => $classroom->count(),
                     'items_per_page' => 20,
                     'view' => 'pager/common'
-                ));
+        ));
 
         $classrooms = $classroom->orderBy($order_by)
                 ->offset($pager->offset)
@@ -150,7 +148,7 @@ class Controller_Classroom extends Layout_Main {
     # 申请加入（非推荐加入班级的途径）
 
     function action_join() {
-
+        
     }
 
     #新建班级
