@@ -160,7 +160,7 @@
                     <a href="/people/eView?id=<?= $e['id'] ?>" target="_blank"><?php else: ?><a href="<?= $e['redirect'] ?>" target="_blank"><?php endif; ?><img src="<?= $e['img_path'] ?>" width="220" height="70" style="margin-bottom:10px"/></a>
                 <?php endforeach; ?>
 
-                <p class="more" style="margin:5px 0"><a href="<?= URL::site('event') ?>">>>更多</a></p>
+                <p class="more" style="margin:5px 0"><a href="/people/enterprise">>>更多</a></p>
         </div>
 
     </div>
