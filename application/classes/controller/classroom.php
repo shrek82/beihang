@@ -10,28 +10,29 @@ class Controller_Classroom extends Layout_Main {
                 ->where('cr.start_year IS NOT NULL')
                 ->addWhere('verify=?', 1)
                 ->groupBy('start_year DESC')
-                ->useResultCache(true, 3600, 'class_count_year')
+                //->useResultCache(true, 3600, 'class_count_year')
                 ->fetchArray();
 
         $view['class_count'] = Doctrine_Query::create()
                 ->from('ClassRoom')
                 ->where('start_year IS NOT NULL')
                 ->addWhere('verify=?', 1)
-                ->useResultCache(true, 3600, 'class_count')
+                // ->useResultCache(true, 3600, 'class_count')
                 ->count();
 
         $view['class_join_count'] = Doctrine_Query::create()
                 ->from('ClassMember')
                 ->groupBy('user_id')
-                ->useResultCache(true, 3600, 'class_join_count')
+                //->useResultCache(true, 3600, 'class_join_count')
                 ->count();
 
         $view['hot_classroom'] = Doctrine_Query::create()
                 ->select('cr.id,cr.speciality,cr.name,cr.start_year,cr.member_num')
                 ->from('ClassRoom cr')
+                ->addWhere('verify=?', 1)
                 ->orderBy('member_num DESC')
                 ->limit(9)
-                ->useResultCache(true, 3600, 'hot_classroom')
+                //->useResultCache(true, 3600, 'hot_classroom')
                 ->fetchArray();
 
         //最新加入
@@ -43,7 +44,7 @@ class Controller_Classroom extends Layout_Main {
                 ->where('m.user_id>0')
                 ->orderBy('m.id DESC')
                 ->limit(4)
-                ->useResultCache(true, 3600, 'last_join_classroom')
+                //->useResultCache(true, 3600, 'last_join_classroom')
                 ->fetchArray();
 
         //我加入的班级
