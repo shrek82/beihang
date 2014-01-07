@@ -23,14 +23,14 @@
 	</div>
 	<div style="width:200px;float:right;border:1px solid #E3EEF8;padding:10px;">
             <ul id="aa_info">
-                <li><a href="<?= URL::site('aa') ?>" >北京航空航天大学校友总会简介</a></li>
-                <li><a href="<?= URL::site('aa/constitution') ?>" >北京航空航天大学校友总会章程</a></li>
-                <li><a href="<?=URL::site('aa/organization')?>" >北京航空航天大学校友总会机构</a></li>
-    		          <li><a href="<?=URL::site('aa/memorabilia')?>" >北京航空航天大学校友总会大事记</a></li>
+                <li ><a href="<?= URL::site('aa') ?>" class="cur">北京航空航天大学校友总会简介</a></li>
+                <li ><a href="<?= URL::site('aa/constitution') ?>" <?php if($_C=='constitution'):?>class="cur"<?php endif;?>>北京航空航天大学校友总会章程</a></li>
+                <li style="display: none"><a href="<?=URL::site('aa/organization')?>" <?php if($_C=='organization'):?>class="cur"<?php endif;?>>北京航空航天大学校友总会理事名单</a></li>
+    	<li style="display: none"><a href="<?=URL::site('aa/memorabilia')?>" <?php if($_C=='memorabilia'):?>class="cur"<?php endif;?>>北京航空航天大学校友总会大事记</a></li>
 <?php foreach ($other_info as $inf): ?>
-<li><a href="<?= URL::site('aa/other?id='.$inf['id']);?>" <?php if($inf['id']==$main['id']):?>class="cur"<?php endif;?>><?= $inf['title'] ?></a></li>
+<li><a href="<?= URL::site('aa/other?id='.$inf['id']);?>" ><?= $inf['title'] ?></a></li>
 <?php endforeach; ?>
-                </ul>
+            </ul>
 
             </div>
 
